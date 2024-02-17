@@ -20,4 +20,24 @@ const getAllUsers = async (req,res) =>{
     }
 }
 
-module.exports = { getAllUsers  };
+const changeUserStatus = async (req,res) => {
+
+    const { isValid } = req.body;
+     const { userId } = req.params;
+
+    try{
+
+             const updatedUserStatus = await User.findByIdAndUpdate(
+                userId,{ $set: { isValid } },{ new: true }
+            );
+
+            res.status(200).json(updatedUserStatus);
+
+
+    }catch(error){
+        res.status(500).json({ message: "Internal server error" });
+
+    }
+}
+
+module.exports = { getAllUsers,changeUserStatus  };

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Doctorprofile = () => {
     return (
         <>
-            <section class="section profile doctor-profile">
+            <section class="section profile doctor-profile"  data-aos="zoom-in">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">

@@ -22,7 +22,7 @@ const Faq = () => {
                         <h2>Frequently Asked Questions</h2>
                     </div>
 
-                    <ul className="faq-list">
+                    <ul className="faq-list"  data-aos="zoom-in"> 
 
                         <li>
                             <div data-bs-toggle="collapse" className="collapsed question" href="#faq1">How do I create an account on the Medicare website?? <i className="bi bi-chevron-down icon-show"></i><i className="bi bi-chevron-up icon-close"></i></div>

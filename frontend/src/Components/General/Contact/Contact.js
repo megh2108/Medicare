@@ -9,40 +9,40 @@ const Contact = () => {
 
                     <div className="section-title">
                         <h2>Contact</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        {/* <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> */}
                     </div>
 
-                    <div className="row">
+                    <div className="row" >
 
-                        <div className="col-lg-6">
+                        <div className="col-lg-6"  data-aos="fade-right">
 
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="info-box">
                                         <i className="bx bx-map"></i>
                                         <h3>Our Address</h3>
-                                        <p>A108 Adam Street, New York, NY 535022</p>
+                                        <p>A - 123, Modi Palace , Red Fort Road, Delhi</p>
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="info-box mt-4">
                                         <i className="bx bx-envelope"></i>
                                         <h3>Email Us</h3>
-                                        <p>info@example.com<br />contact@example.com</p>
+                                        <p>info@medicare.com</p>
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="info-box mt-4">
                                         <i className="bx bx-phone-call"></i>
                                         <h3>Call Us</h3>
-                                        <p>+1 5589 55488 55<br />+1 6678 254445 41</p>
+                                        <p>+91 98765 43210</p>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div className="col-lg-6 mt-4 mt-md-0">
+                        <div className="col-lg-6 mt-4 mt-md-0"  data-aos="fade-left">
                             <form action="forms/contact.php" method="post" role="form" className="php-email-form">
                                 <div className="row">
                                     <div className="col-md-6 form-group">

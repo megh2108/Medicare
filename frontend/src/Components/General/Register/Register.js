@@ -213,9 +213,9 @@ const Register = () => {
     return (
         <>
             <section class="section profile register">
-                <div class="container">
+                <div class="container" data-aos="fade-up">
                     <div class="card">
-                        <div class="card-body pt-3 box-register">
+                        <div class="card-body pt-3 box-register" >
                             {/* <!-- Bordered Tabs --> */}
                             <ul class="nav nav-tabs nav-tabs-bordered nav-register">
 
@@ -228,14 +228,14 @@ const Register = () => {
                                 </li>
 
                             </ul>
-                            <div class="tab-content pt-2">
+                            <div class="tab-content pt-2" data-aos="zoom-in">
 
-                                <div class="container tab-pane fade show active" id="login">
+                                <div class="container tab-pane fade show active" id="login"  >
 
                                     <h5 class="card-title title">Login Form</h5>
 
 
-                                    <div class="row register">
+                                    <div class="row register" data-aos="fade-right">
 
                                         <div class="col-md-6 img">
                                             <img src="assets/img/features-2.png" class="img-fluid login-image" alt="" />
@@ -274,12 +274,12 @@ const Register = () => {
                                 </div>
 
 
-                                <div class="container tab-pane fade" id="register">
+                                <div class="container tab-pane fade" id="register"  >
 
                                     <h5 class="card-title title ">Register Form</h5>
 
 
-                                    <div class="row register">
+                                    <div class="row register"  data-aos="fade-right">
 
 
 

@@ -1,0 +1,143 @@
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+#about {
+
+    margin-top: 50px;
+
+}
+
+#about .content {
+    padding: 30px 30px 30px 0;
+}
+
+#about .content h3 {
+    font-weight: 700;
+    font-size: 34px;
+    color: #2d405f;
+    margin-bottom: 30px;
+}
+
+#about .content p {
+    margin-bottom: 30px;
+    font-size: 17px;
+}
+
+#about .content .about-btn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 30px 8px 30px;
+    color: #777777;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+#about .content .about-btn i {
+    font-size: 14px;
+}
+
+#about .content .about-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#about .icon-boxes .icon-box {
+    margin-top: 30px;
+}
+
+.icon-heading i,
+.icon-heading h4 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 10px;
+}
+
+
+#about .icon-boxes .icon-box i {
+    font-size: 40px;
+    color: #2d405f;
+    margin-bottom: 10px;
+}
+
+#about .icon-boxes .icon-box h4 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #2d405f;
+}
+
+#about .icon-boxes .icon-box p {
+    font-size: 17px;
+}
+
+@media (max-width: 1200px) {
+    #about .content {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #about {
+        text-align: center;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+#services {
+    /* background: #2d405f; */
+    padding-bottom: 80px;
+}
+
+#services .icon-box {
+    padding: 50px 30px;
+    position: relative;
+    overflow: hidden;
+    background:  #2d405f;
+    transition: all 0.3s;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+
+#services .icon-box:hover {
+    transform: scale(1.08);
+}
+
+#services .icon {
+    margin-bottom: 15px;
+}
+
+#services .icon i {
+    font-size: 32px;
+    line-height: 1;
+    color: #2d405f;
+    background: #eff2f8;
+    padding: 20px;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+#services .title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+#services .title a {
+    color: #fff;
+    /* color: #2d405f; */
+    transition: 0.3s;
+}
+
+#services .title a:hover {
+    color: #fff;
+}
+
+#services .description {
+    font-size: 13px;
+    line-height: 28px;
+    margin-bottom: 0;
+    color:#fff;
+}

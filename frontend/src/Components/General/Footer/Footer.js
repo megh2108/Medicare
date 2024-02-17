@@ -18,8 +18,8 @@ const Footer = () => {
                                     A - 123, Modi Palace <br />
                                     Red Fort Road<br />
                                     Delhi <br /><br />
-                                    <strong>Phone:</strong> +91 98765 43210<br />
-                                    <strong>Email:</strong> info@medicare.com<br />
+                                    <strong>Phone : </strong> +91 98765 43210<br />
+                                    <strong>Email : </strong> info@medicare.com<br />
                                 </p>
                             </div>
 
@@ -37,11 +37,10 @@ const Footer = () => {
                             <div className="col-lg-3 col-md-6 footer-links">
                                 <h4>Our Services</h4>
                                 <ul>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Web Design</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Web Development</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Product Management</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Marketing</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Graphic Design</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="/Appointment">Doctor Appointment Booking</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Medicine Search and Ordering</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Telemedicine Consultations</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Health Information and Chatbot Assistance</NavLink></li>
                                 </ul>
                             </div>
 
@@ -57,18 +56,18 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="container d-md-flex py-4">
+                <div className="footer-bootom  py-3">
 
-                    <div className="me-md-auto text-center text-md-start">
-                        <div className="copyright">
-                            &copy; Copyright <strong><span>Medicare</span></strong>. All Rights Reserved
-                        </div>
-                        <div className="credits">
-
-                            Designed by <NavLink to="https://megh-portfolio.vercel.app/" target="_blank">Megh Shah</NavLink>
-                        </div>
+                    <div className="copyright ">
+                        &copy; Copyright <strong><span>Medicare</span></strong>. All Rights Reserved
                     </div>
-                    <div className="social-links text-center text-md-right pt-3 pt-md-0">
+                    <div className="credits pt-1">
+
+                        Designed by <NavLink to="https://megh-portfolio.vercel.app/" target="_blank">Megh Shah</NavLink>
+                    </div>
+
+                    <div className="social-links pt-3">
+
                         <NavLink to="https://twitter.com/Meghshah04?t=CllsgckkLRBABKkRx4ljFw&s=08" target="_blank" className="twitter"><i className="bx bxl-twitter"></i></NavLink>
                         <NavLink to="https://www.facebook.com/megh.shah.338?mibextid=ZbWKwL" target="_blank" className="facebook"><i className="bx bxl-facebook"></i></NavLink>
                         <NavLink to="https://instagram.com/megh___04?igshid=OTk0YzhjMDVlZA==" target="_blank" className="instagram"><i className="bx bxl-instagram"></i></NavLink>

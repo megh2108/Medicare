@@ -5,13 +5,13 @@ import { NavLink } from 'react-router-dom';
 const Doctor = () => {
   return (
     <>
-      <section className="section profile">
+      <section className="section profile"  data-aos="fade-up">
 
         <div className="section-title">
           <h2>Doctor Profile</h2>
         </div>
 
-        <div className="container">
+        <div className="container"  data-aos="zoom-in">
           <div className="row">
             <div className="col-md-4">
               <NavLink to="/Docorprofile">

@@ -18,8 +18,8 @@
     margin-bottom: 30px;
   }
   
-  #footer .footer-top .footer-contact h4 {
-    font-size: 22px;
+  #footer .footer-top .footer-contact h3 {
+    font-size: 30px;
     margin: 0 0 30px 0;
     padding: 2px 0 2px 0;
     line-height: 1;
@@ -40,7 +40,7 @@
   #footer .footer-top h4 {
     font-size: 16px;
     font-weight: bold;
-    color: #c4c4c6;
+    color: #f1f3ff;
     position: relative;
     padding-bottom: 12px;
   }
@@ -84,6 +84,7 @@
     color: #cfcff4;
   }
   
+
   #footer .footer-newsletter {
     font-size: 15px;
   }
@@ -91,7 +92,7 @@
   #footer .footer-newsletter h4 {
     font-size: 16px;
     font-weight: bold;
-    color: #c4c4c6;
+    color: #f1f3ff;
     position: relative;
     padding-bottom: 12px;
   }
@@ -136,15 +137,27 @@
   #footer .footer-newsletter form input[type=submit]:hover {
     background: #0a22f6;
   }
+
   
-  #footer .credits {
-    padding-top: 5px;
-    font-size: 13px;
-    color: #444444;
+  #footer .footer-bootom{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   
+  #footer .copyright ,
+  #footer .credits
+  {
+    padding-top: 5px;
+    font-size: 15px;
+    color: #000;
+  }
+  
+  
   #footer .social-links a {
-    font-size: 18px;
+    font-size: 22px;
     display: inline-block;
     background: #e7eafe;
     color: #3b4ef8;

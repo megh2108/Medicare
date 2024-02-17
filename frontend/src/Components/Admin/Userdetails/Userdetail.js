@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Userdetail.css'
+import { toast } from 'react-toastify';
+
 
 import { useAuth } from '../../../Store/auth';
 
@@ -36,6 +38,37 @@ const Userdetail = () => {
   useEffect(() => {
     getAllUsersData();
   }, [])
+
+
+  const handleStatusChange = async (userId, newStatus) => {
+    try {
+        const response = await fetch(`http://localhost:6500/api/admin/updateUserStatus/${userId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ isValid: newStatus }),
+        });
+
+        if (response.status === 200) {
+            console.log(`User status updated to ${newStatus}`);
+            toast.success(`User status updated to ${newStatus}`);
+
+            setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+                    user._id === userId ? { ...user, isValid: newStatus } : user
+                )
+            );
+        } else {
+            console.log("Failed to update User status");
+            toast.error("Failed to update User status");
+        }
+    } catch (error) {
+        console.error("Error updating user status:", error);
+    }
+};
   // useEffect(() => {
   //   const datatables = document.querySelectorAll('.datatable');
 
@@ -99,8 +132,8 @@ const Userdetail = () => {
                                     Change Status
                                   </button>
                                   <div className="dropdown-menu" aria-labelledby={`statusDropdown-${curUser._id}`}>
-                                    <button className="dropdown-item" >true</button>
-                                    <button className="dropdown-item" >false</button>
+                                    <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, true)}>true</button>
+                                    <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, false)}>false</button>
                                   </div>
                                 </div>
                               </td>
@@ -112,7 +145,6 @@ const Userdetail = () => {
 
                       </tbody>
                     </table>
-
 
                   </div>
                 </div>

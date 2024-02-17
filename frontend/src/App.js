@@ -10,6 +10,7 @@ import axios from "axios";
 import Home from './Components/General/Home/Home';
 import Navbar from './Components/General/Navbar/Navbar';
 import Footer from './Components/General/Footer/Footer';
+import About from './Components/General/About/About';
 import Contact from './Components/General/Contact/Contact';
 import Specialist from './Components/General/Specialist/Specialist';
 import Faq from './Components/General/FAQ/Faq';
@@ -43,6 +44,7 @@ const App = () => {
         {/* general route */}
         <Route path="/Home" excact element={[<Home />, <Specialist />, <Doctor />, <Faq />]} />
         <Route path="/Contact" excact element={<Contact />} />
+        <Route path="/About" excact element={<About />} />
         <Route path="/FAQ" excact element={<Faq />} />
         {/* <Route path="/Login" excact element={<Login />} /> */}
         <Route path="/Logout" excact element={<Logout />} />
