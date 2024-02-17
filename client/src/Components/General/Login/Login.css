@@ -1,0 +1,31 @@
+.login {
+    margin-top: 50px;
+}
+
+.title{
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.line{
+    margin-bottom: 25px;
+}
+
+.box-register {
+
+    text-align: center;
+}
+
+.login-image{
+    height:350px;
+    width: 420px;
+}
+
+.form{
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.donotacc{
+    margin-top: 50px;
+}

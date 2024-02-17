@@ -1,0 +1,46 @@
+.register {
+    margin-top: 50px;
+}
+
+.nav-register {
+
+    justify-content: center;
+}
+
+.title{
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom:0;
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line{
+    margin-bottom: 25px;
+}
+
+.box-register {
+    text-align: center;
+}
+
+.login-image{
+    height:350px;
+    width: 420px;
+}
+
+.form{
+    justify-content: center;
+    /* margin-top: 50px; */
+}
+
+.checkbox{
+    text-align: start;
+}
+
+.donotacc{
+    margin-top: 50px;
+}
