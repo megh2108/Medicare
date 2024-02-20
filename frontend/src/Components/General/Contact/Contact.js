@@ -28,7 +28,7 @@ const Contact = () => {
                                     <div className="info-box mt-4">
                                         <i className="bx bx-envelope"></i>
                                         <h3>Email Us</h3>
-                                        <p>info@medicare.com</p>
+                                        <p>info@healthease.com</p>
                                     </div>
                                 </div>
                                 <div className="col-md-6">

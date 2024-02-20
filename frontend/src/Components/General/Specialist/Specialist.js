@@ -37,14 +37,7 @@ const Specialist = () => {
                                         <div class="col-lg-6 ">
                                             <h3>Primary Care</h3><br />
                                             <p>
-                                                The chemical industry is one of the world’s most important economic sectors and its products have
-                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                factors
-                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                                "PHC is a whole-of-society approach to health that aims at ensuring the highest possible level of health and well-being and their equitable distribution by focusing on people’s needs and as early as possible along the continuum from health promotion and disease prevention to treatment, rehabilitation and palliative care, and as close as feasible to people’s everyday environment," WHO and UNICEF. A vision for primary health care in the 21st century: Towards UHC and the SDGs.
                                             </p>
 
                                         </div>

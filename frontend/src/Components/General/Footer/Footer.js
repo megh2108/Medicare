@@ -13,13 +13,13 @@ const Footer = () => {
                         <div className="row">
 
                             <div className="col-lg-3 col-md-6 footer-contact">
-                                <h3>Medicare</h3>
+                                <h3>HealthEase</h3>
                                 <p>
                                     A - 123, Modi Palace <br />
                                     Red Fort Road<br />
                                     Delhi <br /><br />
                                     <strong>Phone : </strong> +91 98765 43210<br />
-                                    <strong>Email : </strong> info@medicare.com<br />
+                                    <strong>Email : </strong> info@healthease.com<br />
                                 </p>
                             </div>
 
@@ -38,9 +38,9 @@ const Footer = () => {
                                 <h4>Our Services</h4>
                                 <ul>
                                     <li><i className="bx bx-chevron-right"></i> <NavLink to="/Appointment">Doctor Appointment Booking</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Medicine Search and Ordering</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Telemedicine Consultations</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Health Information and Chatbot Assistance</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Medicine Search</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Telemedicine Services</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Chatbot Assistance</NavLink></li>
                                 </ul>
                             </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
                 <div className="footer-bootom  py-3">
 
                     <div className="copyright ">
-                        &copy; Copyright <strong><span>Medicare</span></strong>. All Rights Reserved
+                        &copy; Copyright <strong><span>HealthEase</span></strong>. All Rights Reserved
                     </div>
                     <div className="credits pt-1">
 

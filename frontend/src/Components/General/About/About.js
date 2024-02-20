@@ -15,9 +15,9 @@ const About = () => {
           <div class="row no-gutters">
             <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-right">
               <div class="content">
-                <h3>Abou Medicare</h3>
+                <h3>About HealthEase</h3>
                 <p>
-                  Welcome to Medicure, your trusted healthcare companion dedicated to providing accessible, reliable, and personalized healthcare services. At Medicure, we believe that everyone deserves convenient access to high-quality medical care and accurate health information.
+                  Welcome to HealthEase, your trusted healthcare companion dedicated to providing accessible, reliable, and personalized healthcare services. At HealthEase, we believe that everyone deserves convenient access to high-quality medical care and accurate health information.
                 </p>
                 {/* <a href="#" class="about-btn">About us <i class="bx bx-chevron-right"></i></a> */}
               </div>
@@ -39,7 +39,7 @@ const About = () => {
                       <h4>Mission</h4>
                     </div>
 
-                    <p>"To provide seamless access to high-quality healthcare services and information, fostering a healthier and happier community."</p>
+                    <p>"To provide seamless access to high-quality healthcare services and information, for a healthier and happier community."</p>
                   </div>
                   <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
                     <div class="icon-heading">
@@ -57,7 +57,7 @@ const About = () => {
                       <h4>Team</h4>
                     </div>
 
-                    <p>Behind Medicure is a dedicated team of healthcare professionals, technologists, and innovators passionate about revolutionizing the healthcare industry.</p>
+                    <p>Behind HealthEase is a dedicated team of healthcare professionals, technologists, and innovators passionate about revolutionizing the healthcare industry.</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ const About = () => {
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-file"></i></div>
-                <h4 class="title"><a href="">Medicine Search and Ordering</a></h4>
+                <h4 class="title"><a href="">Medicine Search</a></h4>
                 <p class="description text-start mt-5">Access a comprehensive database of medicines for common ailments, along with detailed information on dosage, usage, and side effects. You can also check real-time availability in local pharmacies and conveniently order medicines online for delivery to your doorstep.</p>
               </div>
             </div>
@@ -95,7 +95,7 @@ const About = () => {
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-tachometer"></i></div>
-                <h4 class="title"><a href="">Telemedicine Consultations</a></h4>
+                <h4 class="title"><a href="">Telemedicine Services</a></h4>
                 <p class="description text-start mt-5"> Connect with qualified healthcare professionals from the comfort of your home through secure and reliable telemedicine consultations. Whether you're seeking medical advice, follow-up care, or second opinions, our telemedicine services enable you to receive quality healthcare without the need for physical appointments.</p>
               </div>
             </div>
@@ -103,7 +103,7 @@ const About = () => {
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="400">
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-layer"></i></div>
-                <h4 class="title"><a href="">Health Information and Chatbot Assistance</a></h4>
+                <h4 class="title"><a href="">Chatbot Assistance</a></h4>
                 <p class="description text-start mt-5">Get accurate and reliable health information and guidance through our user-friendly chatbot. Whether you have questions about symptoms, medications, or general health concerns, our chatbot provides instant assistance, helping you make informed decisions about your health and well-being.</p>
               </div>
             </div>

@@ -108,7 +108,7 @@ const Navbar = () => {
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center justify-content-between">
 
-          <h1 className="logo"><NavLink to="/">Medicare</NavLink></h1>
+          <h1 className="logo"><NavLink to="/">HealthEase</NavLink></h1>
 
           <nav id="navbar" className="navbar">
             <ul>
