@@ -8,7 +8,7 @@ const Doctor = () => {
       <section className="section profile"  data-aos="fade-up">
 
         <div className="section-title">
-          <h2>Doctor Profile</h2>
+          <h2>Our Doctors</h2>
         </div>
 
         <div className="container"  data-aos="zoom-in">
@@ -65,6 +65,9 @@ const Doctor = () => {
             </div>
 
           </div>
+          
+          <NavLink to="#" class="btn btn-primary">View More<i class="bx bx-chevron-right"></i></NavLink>
+
         </div>
       </section>
     </>

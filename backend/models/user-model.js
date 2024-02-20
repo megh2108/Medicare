@@ -50,9 +50,13 @@ const userSchema = new mongoose.Schema({
         }
     },
     isValid: {
-        type: Boolean,
-        default: false,
+        type: String,
+        default: 'In-active',
     },
+    // isValid: {
+    //     type: Boolean,
+    //     default: false,
+    // },
 });
 
 //? secure the password with the bcrypt
@@ -72,7 +76,7 @@ userSchema.pre("save", async function () {
         user.cpassword = hashedCpassword;
 
         if (user.type === 'admin') {
-            user.isValid = true;
+            user.isValid = 'Active';
         }
 
 

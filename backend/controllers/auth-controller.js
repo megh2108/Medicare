@@ -66,7 +66,7 @@ const login = async (req, res) => {
         const isPasswordValid = await userExist.comparePassword(passwords);
 
         if (isPasswordValid) {
-            if (userExist.isValid == true) {
+            if (userExist.isValid === 'Active') {
 
                 if (userExist.type === 'doctor') {
                     res.status(201).json({ message: "Doctor Login Successful", token: await userExist.generateToken(), userId: userExist._id.toString(), });

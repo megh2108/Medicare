@@ -27,25 +27,25 @@ const Specialist = () => {
                             </div>
                         </div>
 
-                        <div id="Primary_Care" style={{"display":" none"}}>
-                            <section id="about">
+                        <div id="Primary_Care" style={{ "display": " none" }}>
+                            <section>
                                 <div class="container" data-aos="fade-up">
                                     <div class="row">
-                                        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                                            {/* <img src="/ConveyorBelt_Website_include/img/card/chemical_industry.jpg" class="img-fluid" alt=""> */}
+                                        <div class="col-lg-6 fancyimgdiv" data-aos="fade-left" data-aos-delay="100">
+                                            <img src="assets/img/Specialist/1.png" class="fancyimg" />
                                         </div>
-                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                                            <h3>Primary Care</h3><br/>                                               
-                                                <p>
-                                                    The chemical industry is one of the world’s most important economic sectors and its products have
-                                                    directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                    products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                    pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                    factors
-                                                    like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                    transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                    and/or conveyor components are involved, and we are keen to deliver them.
-                                                </p>
+                                        <div class="col-lg-6 ">
+                                            <h3>Primary Care</h3><br />
+                                            <p>
+                                                The chemical industry is one of the world’s most important economic sectors and its products have
+                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
+                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
+                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
+                                                factors
+                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
+                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
+                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                            </p>
 
                                         </div>
                                     </div>
@@ -65,26 +65,26 @@ const Specialist = () => {
                             </div>
                         </div>
 
-                        <div id="Dentist" style={{"display":" none"}}>
-                            <section id="about">
+                        <div id="Dentist" style={{ "display": " none" }}>
+                            <section >
                                 <div class="container" data-aos="fade-up">
                                     <div class="row">
-                                        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                                            {/* <img src="/ConveyorBelt_Website_include/img/card/chemical_industry.jpg" class="img-fluid" alt=""> */}
-                                        </div>
-                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                                            <h3>Dentist</h3><br/>                                               
-                                                <p>
-                                                    The chemical industry is one of the world’s most important economic sectors and its products have
-                                                    directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                    products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                    pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                    factors
-                                                    like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                    transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                    and/or conveyor components are involved, and we are keen to deliver them.
-                                                </p>
+                                        <div class="col-lg-6 ">
+                                            <h3>Dentist</h3><br />
+                                            <p>
+                                                The chemical industry is one of the world’s most important economic sectors and its products have
+                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
+                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
+                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
+                                                factors
+                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
+                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
+                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                            </p>
 
+                                        </div>
+                                        <div class="col-lg-6 fancyimgdiv" data-aos="fade-left" data-aos-delay="100">
+                                            <img src="assets/img/Specialist/2.png" class="fancyimg" />
                                         </div>
                                     </div>
 
@@ -102,25 +102,25 @@ const Specialist = () => {
                             </div>
                         </div>
 
-                        <div id="Eye_Doctor" style={{"display":" none"}}>
-                            <section id="about">
+                        <div id="Eye_Doctor" style={{ "display": " none" }}>
+                            <section >
                                 <div class="container" data-aos="fade-up">
                                     <div class="row">
-                                        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                                            {/* <img src="/ConveyorBelt_Website_include/img/card/chemical_industry.jpg" class="img-fluid" alt=""> */}
+                                        <div class="col-lg-6 fancyimgdiv" data-aos="fade-left" data-aos-delay="100">
+                                            <img src="assets/img/Specialist/3.png" class="fancyimg" />
                                         </div>
-                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                                            <h3>Eye Doctor</h3><br/>                                               
-                                                <p>
-                                                    The chemical industry is one of the world’s most important economic sectors and its products have
-                                                    directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                    products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                    pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                    factors
-                                                    like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                    transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                    and/or conveyor components are involved, and we are keen to deliver them.
-                                                </p>
+                                        <div class="col-lg-6 ">
+                                            <h3>Eye Doctor</h3><br />
+                                            <p>
+                                                The chemical industry is one of the world’s most important economic sectors and its products have
+                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
+                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
+                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
+                                                factors
+                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
+                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
+                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                            </p>
 
                                         </div>
                                     </div>
@@ -139,26 +139,26 @@ const Specialist = () => {
                             </div>
                         </div>
 
-                        <div id="Physiotherapists" style={{"display":" none"}}>
-                            <section id="about">
+                        <div id="Physiotherapists" style={{ "display": " none" }}>
+                            <section >
                                 <div class="container" data-aos="fade-up">
                                     <div class="row">
-                                        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                                            {/* <img src="/ConveyorBelt_Website_include/img/card/chemical_industry.jpg" class="img-fluid" alt=""> */}
-                                        </div>
-                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                                            <h3>Physiotherapists</h3><br/>                                               
-                                                <p>
-                                                    The chemical industry is one of the world’s most important economic sectors and its products have
-                                                    directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                    products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                    pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                    factors
-                                                    like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                    transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                    and/or conveyor components are involved, and we are keen to deliver them.
-                                                </p>
+                                        <div class="col-lg-6 ">
+                                            <h3>Physiotherapists</h3><br />
+                                            <p>
+                                                The chemical industry is one of the world’s most important economic sectors and its products have
+                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
+                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
+                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
+                                                factors
+                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
+                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
+                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                            </p>
 
+                                        </div>
+                                        <div class="col-lg-6 fancyimgdiv" data-aos="fade-left" data-aos-delay="100">
+                                            <img src="assets/img/Specialist/4.png" class="fancyimg" />
                                         </div>
                                     </div>
 
@@ -176,25 +176,25 @@ const Specialist = () => {
                             </div>
                         </div>
 
-                        <div id="Orthopedic" style={{"display":" none"}}>
-                            <section id="about">
+                        <div id="Orthopedic" style={{ "display": " none" }}>
+                            <section >
                                 <div class="container" data-aos="fade-up">
                                     <div class="row">
-                                        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                                            {/* <img src="/ConveyorBelt_Website_include/img/card/chemical_industry.jpg" class="img-fluid" alt=""> */}
+                                        <div class="col-lg-6 fancyimgdiv" data-aos="fade-left" data-aos-delay="100">
+                                            <img src="assets/img/Specialist/5.png" class="fancyimg" />
                                         </div>
-                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                                            <h3>Orthopedic</h3><br/>                                               
-                                                <p>
-                                                    The chemical industry is one of the world’s most important economic sectors and its products have
-                                                    directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                    products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                    pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                    factors
-                                                    like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                    transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                    and/or conveyor components are involved, and we are keen to deliver them.
-                                                </p>
+                                        <div class="col-lg-6 ">
+                                            <h3>Orthopedic</h3><br />
+                                            <p>
+                                                The chemical industry is one of the world’s most important economic sectors and its products have
+                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
+                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
+                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
+                                                factors
+                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
+                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
+                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                            </p>
 
                                         </div>
                                     </div>
@@ -213,26 +213,26 @@ const Specialist = () => {
                             </div>
                         </div>
 
-                        <div id="Cardiologist" style={{"display":" none"}}>
-                            <section id="about">
+                        <div id="Cardiologist" style={{ "display": " none" }}>
+                            <section >
                                 <div class="container" data-aos="fade-up">
                                     <div class="row">
-                                        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                                            {/* <img src="/ConveyorBelt_Website_include/img/card/chemical_industry.jpg" class="img-fluid" alt=""> */}
-                                        </div>
-                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                                            <h3>Cardiologist</h3><br/>                                               
-                                                <p>
-                                                    The chemical industry is one of the world’s most important economic sectors and its products have
-                                                    directly or indirectly found their way into all areas of daily life. In the chemical industry, our
-                                                    products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
-                                                    pellets or powders. These industries demand making of conveyor technologies keeping in mind some
-                                                    factors
-                                                    like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
-                                                    transport method. Their special requirements are our challenge – no matter whether chains, sprockets
-                                                    and/or conveyor components are involved, and we are keen to deliver them.
-                                                </p>
+                                        <div class="col-lg-6 ">
+                                            <h3>Cardiologist</h3><br />
+                                            <p>
+                                                The chemical industry is one of the world’s most important economic sectors and its products have
+                                                directly or indirectly found their way into all areas of daily life. In the chemical industry, our
+                                                products, especially chain conveyors are used to transport fertilizer, detergent powders, and plastic
+                                                pellets or powders. These industries demand making of conveyor technologies keeping in mind some
+                                                factors
+                                                like corrosion, wear & tear, thermal stress, explosion protection and most importantly bulk material
+                                                transport method. Their special requirements are our challenge – no matter whether chains, sprockets
+                                                and/or conveyor components are involved, and we are keen to deliver them.
+                                            </p>
 
+                                        </div>
+                                        <div class="col-lg-6 fancyimgdiv" data-aos="fade-left" data-aos-delay="100">
+                                            <img src="assets/img/Specialist/6.png" class="fancyimg" />
                                         </div>
                                     </div>
 

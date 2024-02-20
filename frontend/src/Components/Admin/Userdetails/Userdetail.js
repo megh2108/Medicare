@@ -89,9 +89,6 @@ const Userdetail = () => {
 
 
       <main id="main" class="main">
-
-
-
         <section class="section">
           <div class="row">
             <div class="col-lg-12">
@@ -101,7 +98,7 @@ const Userdetail = () => {
                   <h5 class="card-title title ">User Details</h5>
                   {/* <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p> */}
 
-                  <div class="table-responsive">
+                  <div class="table-responsive mt-5">
                     <table class="table table-bordered table-info table-striped table-hover">
                       <thead>
                         <tr>
@@ -110,7 +107,7 @@ const Userdetail = () => {
                           <th>Email</th>
                           <th>Contact No</th>
                           <th>User Type</th>
-                          <th>Valid(true/false)</th>
+                          <th>Active/In-active</th>
                           <th>Change Status</th>
                         </tr>
                       </thead>
@@ -125,15 +122,15 @@ const Userdetail = () => {
                               <td>{curUser.email}</td>
                               <td>{curUser.phone}</td>
                               <td>{curUser.type}</td>
-                              <td>{String(curUser.isValid)}</td>
+                              <td>{curUser.isValid}</td>
                               <td>
                                 <div className="dropdown">
                                   <button className="btn btn-info dropdown-toggle" type="button" id={`statusDropdown-${curUser._id}`} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Change Status
                                   </button>
                                   <div className="dropdown-menu" aria-labelledby={`statusDropdown-${curUser._id}`}>
-                                    <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, true)}>true</button>
-                                    <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, false)}>false</button>
+                                    <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, 'Active')}>Active</button>
+                                    <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, 'In-active')}>In-active</button>
                                   </div>
                                 </div>
                               </td>
