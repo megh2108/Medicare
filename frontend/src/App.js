@@ -21,7 +21,8 @@ import ScrollToTop from './Components/General/Scroll/ScrollToTop';
 import Error from './Components/General/Error/Error';
 
 // user
-import Doctor from './Components/User/Doctor/Doctor';
+import Doctor_Home from './Components/User/Doctor_Home/Doctor_Home';
+import Doctor_Page from './Components/User/Doctor_Page/Doctor_Page';
 import Doctorprofile from './Components/User/Doctorprofile/Doctorprofile';
 import Appointment from './Components/User/Appointment/Appointment';
 
@@ -83,7 +84,7 @@ const App = () => {
       <Routes>
 
         {/* general route */}
-        <Route path="/Home" excact element={[<Home />, <Specialist />, <Doctor />, <Faq />]} />
+        <Route path="/Home" excact element={[<Home />, <Specialist />, <Doctor_Home />, <Faq />]} />
         <Route path="/Contact" excact element={<Contact />} />
         <Route path="/About" excact element={<About />} />
         <Route path="/FAQ" excact element={<Faq />} />
@@ -97,6 +98,7 @@ const App = () => {
         {/* user route */}
         <Route path="/Docorprofile" excact element={<Doctorprofile />} />
         <Route path="/Appointment" excact element={<Appointment />} />
+        <Route path="/Doctor_Page" excact element={<Doctor_Page />} />
 
 
         <Route path="/Admin" excact element={<Sidebar /> } >
