@@ -32,6 +32,47 @@ import Dashboard from './Components/Admin/Dashboard/Dashboard';
 
 const App = () => {
 
+  // useEffect(() => {
+  //   const loadScript = () => {
+  //     const script = document.createElement("script");
+  //     script.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+  //     script.async = true;
+
+  //     script.onerror = () => {
+  //       console.error("Error loading Kommunicate script.");
+  //     };
+
+  //     document.body.appendChild(script);
+
+  //     return () => {
+  //       // Cleanup function to remove the script when component unmounts
+  //       document.body.removeChild(script);
+  //     };
+  //   };
+
+  //   loadScript();
+  // }, []);
+
+  // useEffect(() => {
+  //   const loadKommunicateScript = () => {
+  //     const kommunicateSettings = {
+  //       appId: "2f12877b0317a94aed3a1627ed99c2729",
+  //       popupWidget: true,
+  //       automaticChatOpenOnNavigation: true
+  //     };
+
+  //     const script = document.createElement("script");
+  //     script.type = "text/javascript";
+  //     script.async = true;
+  //     script.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+
+  //     document.head.appendChild(script);
+  //     window.kommunicate = window.kommunicate || {};
+  //     window.kommunicate._globals = kommunicateSettings;
+  //   };
+
+  //   loadKommunicateScript();
+  // }, []);
 
   return (
     <>
