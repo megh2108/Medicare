@@ -1,11 +1,13 @@
 const User = require("../models/user-model");
+const Medicine = require("../models/medicine-model");
+
 
 const getAllUsers = async (req,res) =>{
 
     try{
 
         const users = await User.find({},{password:0,cpassword:0});
-        console.log(users);
+        // console.log(users);
         
         if(!users || users.length === 0){
             return res.status(404).json({ message: "No User Found" });
@@ -40,4 +42,54 @@ const changeUserStatus = async (req,res) => {
     }
 }
 
-module.exports = { getAllUsers,changeUserStatus  };
+const insertMedicine = async (req,res) => {
+
+    try {
+
+        console.log(req.body);
+        const { name, dosage,sideEffects,symptoms,contraindications,usageInstructions,manufacturer } = req.body;
+
+        const medicineExist = await Medicine.findOne({ name });
+
+        if (medicineExist) {
+            return res.status(400).json({ msg: "medicine already exists" });
+        }
+
+        const medicineCreated = await Medicine.create({
+            name, dosage,sideEffects,symptoms,contraindications,usageInstructions,manufacturer
+        });
+
+        if (!medicineCreated) {
+            return res.status(500).json({ message: "Failed to create user" });
+        }
+
+        res.status(201).json({ message: "Medicine inserted successfully" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+
+
+    }
+}
+
+
+const getMedicine = async (req, res) => {
+    try {
+
+        const medicines = await Medicine.find({});
+        // console.log(medicines);
+        
+        if(!medicines || medicines.length === 0){
+            return res.status(404).json({ message: "No medicines Found" });
+
+        }
+
+        return res.status(200).json(medicines);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+module.exports = { getAllUsers,changeUserStatus,insertMedicine, getMedicine  };

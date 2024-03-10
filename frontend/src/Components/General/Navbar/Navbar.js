@@ -115,6 +115,7 @@ const Navbar = () => {
               <li><NavLink className="nav-link scrollto abc" to="/Home">Home</NavLink></li>
               <li><NavLink className="nav-link scrollto abc" to="/About">About</NavLink></li>
               <li><NavLink className="nav-link scrollto abc" to="/FAQ">FAQ's</NavLink></li>
+              <li><NavLink className="nav-link scrollto abc" to="/Medicine">Medicine</NavLink></li>
               <li><NavLink className="nav-link scrollto abc" to="/Contact">Contact</NavLink></li>
 
               {isLoggedIn ? (

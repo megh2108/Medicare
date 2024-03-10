@@ -1,4 +1,5 @@
 const User = require("../models/user-model");
+const Medicine = require("../models/medicine-model");
 
 const home = (req, res) => {
 
@@ -107,5 +108,6 @@ const adminauth = async (req,res) => {
         console.log(` error from user route ${error}`);
       }
 }
+
 
 module.exports = { home, register, login, adminauth };

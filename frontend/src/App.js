@@ -25,6 +25,7 @@ import Doctor_Home from './Components/User/Doctor_Home/Doctor_Home';
 import Doctor_Page from './Components/User/Doctor_Page/Doctor_Page';
 import Doctorprofile from './Components/User/Doctorprofile/Doctorprofile';
 import Appointment from './Components/User/Appointment/Appointment';
+import Medicine from './Components/User/Medicine/Medicine';
 
 //admin
 import Sidebar from './Components/Admin/Sidebar/Sidebar';
@@ -88,6 +89,7 @@ const App = () => {
         <Route path="/Contact" excact element={<Contact />} />
         <Route path="/About" excact element={<About />} />
         <Route path="/FAQ" excact element={<Faq />} />
+        <Route path="/Medicine" excact element={<Medicine/>} />
         {/* <Route path="/Login" excact element={<Login />} /> */}
         <Route path="/Logout" excact element={<Logout />} />
         <Route path="/Signup_Login" excact element={<Register />} />
