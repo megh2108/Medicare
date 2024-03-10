@@ -15,7 +15,7 @@ const Doctor = () => {
           <div className="row">
             <div className="col-md-4">
               <NavLink to="/Docorprofile">
-                <div className="card">
+                <div className="card card-doctor">
                   <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                     <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
@@ -32,7 +32,7 @@ const Doctor = () => {
               </NavLink>
             </div>
             <div className="col-md-4">
-              <div className="card">
+              <div className="card card-doctor">
                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                   <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
@@ -48,7 +48,7 @@ const Doctor = () => {
               </div>
             </div>
             <div className="col-md-4">
-              <div className="card">
+              <div className="card card-doctor">
                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                   <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />

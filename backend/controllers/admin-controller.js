@@ -91,5 +91,22 @@ const getMedicine = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
+const getDoctor = async (req, res) => {
+    try {
 
-module.exports = { getAllUsers,changeUserStatus,insertMedicine, getMedicine  };
+        const doctors = await User.find({type: 'doctor'},{password:0,cpassword:0});
+        console.log(doctors);
+        
+        if(!doctors || doctors.length === 0){
+            return res.status(404).json({ message: "No doctor Found" });
+
+        }
+        return res.status(200).json(doctors);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+module.exports = { getAllUsers,changeUserStatus,insertMedicine, getMedicine, getDoctor  };

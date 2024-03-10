@@ -1,0 +1,50 @@
+#doctor-page {
+
+    margin-top: 50px;
+
+}
+
+/*--------------------------------------------------------------
+# Profie Page
+--------------------------------------------------------------*/
+#doctor-page .profile-card img {
+    /* max-width: 800px; */
+    height: 200px;
+    width: 200px;
+    margin: 15px 0 0 0;
+}
+
+#doctor-page .profile-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c384e;
+    margin: 10px 0 5px 0;
+}
+
+#doctor-page .profile-card h3 {
+    margin: 10px 0 10px 0;
+    font-size: 18px;
+}
+
+#doctor-page .profile-card .social-links a {
+    font-size: 20px;
+    display: inline-block;
+    color: rgba(1, 41, 112, 0.5);
+    line-height: 0;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+#doctor-page .profile-card .social-links a:hover {
+    color: #012970;
+}
+
+.card-doctor {
+    /* box-shadow: 5px 10px #888888; */
+    box-shadow: 0 8px 8px 1px lightblue;
+
+}
+
+.card-doctor:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
