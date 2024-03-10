@@ -95,7 +95,7 @@ const getDoctor = async (req, res) => {
     try {
 
         const doctors = await User.find({type: 'doctor'},{password:0,cpassword:0});
-        console.log(doctors);
+        // console.log(doctors);
         
         if(!doctors || doctors.length === 0){
             return res.status(404).json({ message: "No doctor Found" });
