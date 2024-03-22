@@ -56,7 +56,12 @@ const Register = () => {
             console.log("response", responseData);
             console.log("response status : ", response.status);
 
-            if (response.status === 400) {
+            if (response.status === 422) {
+                // window.alert("Invalid registration");
+                toast.error(responseData.extraDetails);
+                console.log(responseData.extraDetails);
+            }
+            else if (response.status === 400) {
                 // window.alert("Invalid registration");
                 toast.error("Invalid registration");
                 console.log("Invalid registration");
