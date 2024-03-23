@@ -2,14 +2,14 @@ const User = require("../models/user-model");
 const Medicine = require("../models/medicine-model");
 
 
-const getAllUsers = async (req,res) =>{
+const getAllUsers = async (req, res) => {
 
-    try{
+    try {
 
-        const users = await User.find({},{password:0,cpassword:0});
+        const users = await User.find({}, { password: 0, cpassword: 0 });
         // console.log(users);
-        
-        if(!users || users.length === 0){
+
+        if (!users || users.length === 0) {
             return res.status(404).json({ message: "No User Found" });
 
         }
@@ -17,37 +17,59 @@ const getAllUsers = async (req,res) =>{
         return res.status(200).json(users);
 
 
-    }catch(error){
+    } catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-const changeUserStatus = async (req,res) => {
+
+const getAllMedicines = async (req, res) => {
+
+    try {
+
+        const medicines = await Medicine.find({}, { password: 0, cpassword: 0 });
+        // console.log(users);
+
+        if (!medicines || medicines.length === 0) {
+            return res.status(404).json({ message: "No medicines Found" });
+
+        }
+        // console.log(medicines);
+        return res.status(200).json(medicines);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+
+const changeUserStatus = async (req, res) => {
 
     const { isValid } = req.body;
-     const { userId } = req.params;
+    const { userId } = req.params;
 
-    try{
+    try {
 
-             const updatedUserStatus = await User.findByIdAndUpdate(
-                userId,{ $set: { isValid } },{ new: true }
-            );
+        const updatedUserStatus = await User.findByIdAndUpdate(
+            userId, { $set: { isValid } }, { new: true }
+        );
 
-            res.status(200).json(updatedUserStatus);
+        res.status(200).json(updatedUserStatus);
 
 
-    }catch(error){
+    } catch (error) {
         res.status(500).json({ message: "Internal server error" });
 
     }
 }
 
-const insertMedicine = async (req,res) => {
+const insertMedicine = async (req, res) => {
 
     try {
 
         console.log(req.body);
-        const { name, dosage,sideEffects,symptoms,contraindications,usageInstructions,manufacturer } = req.body;
+        const { name, dosage, sideEffects, symptoms, contraindications, usageInstructions, manufacturer } = req.body;
 
         const medicineExist = await Medicine.findOne({ name });
 
@@ -56,7 +78,7 @@ const insertMedicine = async (req,res) => {
         }
 
         const medicineCreated = await Medicine.create({
-            name, dosage,sideEffects,symptoms,contraindications,usageInstructions,manufacturer
+            name, dosage, sideEffects, symptoms, contraindications, usageInstructions, manufacturer
         });
 
         if (!medicineCreated) {
@@ -78,8 +100,8 @@ const getMedicine = async (req, res) => {
 
         const medicines = await Medicine.find({});
         // console.log(medicines);
-        
-        if(!medicines || medicines.length === 0){
+
+        if (!medicines || medicines.length === 0) {
             return res.status(404).json({ message: "No medicines Found" });
 
         }
@@ -91,13 +113,15 @@ const getMedicine = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
+
+
 const getDoctor = async (req, res) => {
     try {
 
-        const doctors = await User.find({type: 'doctor'},{password:0,cpassword:0});
+        const doctors = await User.find({ type: 'doctor' }, { password: 0, cpassword: 0 });
         // console.log(doctors);
-        
-        if(!doctors || doctors.length === 0){
+
+        if (!doctors || doctors.length === 0) {
             return res.status(404).json({ message: "No doctor Found" });
 
         }
@@ -109,4 +133,4 @@ const getDoctor = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers,changeUserStatus,insertMedicine, getMedicine, getDoctor  };
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines };

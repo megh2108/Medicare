@@ -28,6 +28,16 @@ const Sidebar = () => {
 
           </li>
 
+          <li class="nav-item">
+            <NavLink to="/Admin/Medicinedetails">
+              <div class="nav-link collapsed" >
+                <i class="bi bi-person-square"></i>
+                <span>Medicine Detail</span>
+              </div>
+            </NavLink>
+
+          </li>
+
 
 
         </ul>
