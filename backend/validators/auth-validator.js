@@ -36,7 +36,7 @@ const signupSchema = z.object({
 const loginSchema = z.object({
 
     name: z.string().optional(),
-    emails: z
+    email: z
         .string({ required_error: "Email is required" })
         .trim()
         .email({ message: "Invalid email address" })
@@ -44,7 +44,7 @@ const loginSchema = z.object({
         .max(255, { message: "Email must not be more than 255 characters" }),
 
     phone: z.string().optional(),
-    passwords: z
+    password: z
         .string({ required_error: "Password is required" })
         .min(7, { message: "Password must be at least of 6 characters" })
         .max(1024, "Password can't be greater than 1024 characters"),
