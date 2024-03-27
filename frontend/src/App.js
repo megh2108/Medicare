@@ -32,6 +32,7 @@ import Sidebar from './Components/Admin/Sidebar/Sidebar';
 import Userdetail from './Components/Admin/Userdetails/Userdetail';
 import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import Medicinedetail from './Components/Admin/Medicinedetails/Medicinedetail';
+import Addmedicine from './Components/Admin/Addmedicine/Addmedicine';
 
 const App = () => {
 
@@ -108,6 +109,7 @@ const App = () => {
 
           <Route path="Dashboard" excact element={<Dashboard />} />
           <Route path="Userdetails" excact element={<Userdetail />} />
+          <Route path="Addmedicine" excact element={<Addmedicine />} />
           <Route path="Medicinedetails" excact element={<Medicinedetail />} />
         </Route>
 
