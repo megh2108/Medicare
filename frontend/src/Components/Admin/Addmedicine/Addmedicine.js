@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Addmedicine = () => {
 
-    const [updateMode, setUpdateMode] = useState(true);
+    const [updateMode, setUpdateMode] = useState(false);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -37,7 +37,17 @@ const Addmedicine = () => {
                 toast.error(responseData.msg);
             } else if (response.status === 201) {
                 toast.success("Medicine inserted successfully");
-                setFormData('');
+
+
+                setFormData({
+                    name: '',
+                    dosage: '',
+                    sideEffects: [''],
+                    symptoms: [''],
+                    contraindications: [''],
+                    usageInstructions: '',
+                    manufacturer: ''
+                });
             } else {
                 toast.error("Internal Server Error");
             }
@@ -46,6 +56,8 @@ const Addmedicine = () => {
             console.error("Error:", error);
         }
     };
+
+    // following three function for adding
 
     const handleChange = (e, index, field) => {
         const { value } = e.target;
@@ -70,6 +82,22 @@ const Addmedicine = () => {
     };
 
     console.log(formData);
+
+    // following function for editing
+
+    const handleCancelUpdate = () => {
+        setFormData({
+            name: '',
+            dosage: '',
+            sideEffects: [''],
+            symptoms: [''],
+            contraindications: [''],
+            usageInstructions: '',
+            manufacturer: ''
+        });
+        setUpdateMode(false);
+        // setItemIdToUpdate(null);
+    };
 
     return (
         <main id="main" className="main">
@@ -136,7 +164,7 @@ const Addmedicine = () => {
                                                 </div>
 
                                                 <div className="col-6 text-center">
-                                                    <button type="button" class="btn btn-primary mt-4">Cancel Update</button>
+                                                    <button type="button" class="btn btn-primary mt-4" onClick={handleCancelUpdate}>Cancel Update</button>
                                                     {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
                                                 </div>
                                             </>
