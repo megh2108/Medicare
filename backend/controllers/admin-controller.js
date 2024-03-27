@@ -68,7 +68,6 @@ const updateMedicines = async (req, res) => {
 
     try {
         const updateMedicine = await Medicine.findByIdAndUpdate(id, updateData, { new: true });
-        console.log(updateMedicine);
         if (!updateMedicine) {
             return res.status(404).json({ error: 'Medicine not updated' });
         }
