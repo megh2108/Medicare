@@ -5,6 +5,9 @@ import { toast } from 'react-toastify';
 
 
 const Addmedicine = () => {
+
+    const [updateMode, setUpdateMode] = useState(true);
+
     const [formData, setFormData] = useState({
         name: '',
         dosage: '',
@@ -75,7 +78,7 @@ const Addmedicine = () => {
                     <div className="col-lg-12">
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title title">Add Medicine</h5>
+                                <h5 className="card-title title">{updateMode ? 'Update Medicine' : 'Add Medicine'}</h5>
                                 <form>
                                     <div className="row g-3 mt-3">
                                         <div className="col-md-4">
@@ -125,10 +128,28 @@ const Addmedicine = () => {
                                             <input type="text" className="form-control" id="usageInstructions" name="usageInstructions" value={formData.usageInstructions} onChange={(e) => setFormData({ ...formData, usageInstructions: e.target.value })} required />
                                         </div>
 
-                                        <div className="col-12 text-center">
-                                            <button type="button" class="btn btn-primary mt-4" onClick={addMedicine}>Add Medicine</button>
-                                            {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
-                                        </div>
+                                        {updateMode ? (
+                                            <>
+                                                <div className="col-6 text-center">
+                                                    <button type="button" class="btn btn-primary mt-4">Update Medicine</button>
+                                                    {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
+                                                </div>
+
+                                                <div className="col-6 text-center">
+                                                    <button type="button" class="btn btn-primary mt-4">Cancel Update</button>
+                                                    {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+
+                                                <div className="col-12 text-center">
+                                                    <button type="button" class="btn btn-primary mt-4" onClick={addMedicine}>Add Medicine</button>
+                                                    {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
+                                                </div>
+
+                                            </>
+                                        )}
                                     </div>
                                 </form>
                             </div>
