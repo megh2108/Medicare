@@ -112,6 +112,7 @@ const App = () => {
           <Route path="Dashboard" excact element={<Dashboard />} />
           <Route path="Userdetails" excact element={<Userdetail />} />
           <Route path="Addmedicine" excact element={<Addmedicine />} />
+          <Route path="Addmedicine/:id" excact element={<Addmedicine />} />
           <Route path="Medicinedetails" excact element={<Medicinedetail />} />
         </Route>
 

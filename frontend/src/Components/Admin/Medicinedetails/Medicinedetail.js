@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import './Medicinedetail.css'
 
 import { useAuth } from '../../../Store/auth';
 
 
 const Medicinedetail = () => {
+    const navigate = useNavigate();
 
     const { token } = useAuth();
 
@@ -36,6 +39,12 @@ const Medicinedetail = () => {
         getAllMedicineData();
     }, [])
 
+    //update
+
+    const handleUpdate = (medicine) => {
+        navigate(`/Admin/Addmedicine/${medicine._id}`); 
+    };
+
     return (
         <>
 
@@ -61,12 +70,13 @@ const Medicinedetail = () => {
                                                     <th>Contraindications</th>
                                                     <th>Usage Instructions</th>
                                                     <th>Manufacturer</th>
+                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">
 
                                                 {medicines.map((medicine, index) => (
-                                                    <tr key={index}>
+                                                    <tr key={medicine._id}>
                                                         <td>{index + 1}</td>
                                                         <td>{medicine.name}</td>
                                                         <td>{medicine.dosage}</td>
@@ -75,37 +85,15 @@ const Medicinedetail = () => {
                                                         <td>{medicine.contraindications.join(', ')}</td>
                                                         <td>{medicine.usageInstructions}</td>
                                                         <td>{medicine.manufacturer}</td>
+                                                        <td>
+                                                            <button className="btn btn-primary w-100" type="button" onClick={() => handleUpdate(medicine)}>Update</button>
+                                                            <button className="btn btn-danger w-100 mt-3" type="button">Delete</button>
+
+                                                        </td>
                                                     </tr>
                                                 ))}
 
-                                                {/* {users.map((curUser, index) => {
-
-                                                    return (
-                                                        <tr key={index}>
-                                                            <td>{index + 1}</td>
-                                                            <td>{curUser.name}</td>
-                                                            <td>{curUser.email}</td>
-                                                            <td>{curUser.phone}</td>
-                                                            <td>{curUser.type}</td>
-                                                            <td>{curUser.isValid}</td>
-                                                            <td>
-                                                                <div className="dropdown">
-                                                                    <button className="btn btn-info dropdown-toggle" type="button" id={`statusDropdown-${curUser._id}`} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        Change Status
-                                                                    </button>
-                                                                    <div className="dropdown-menu" aria-labelledby={`statusDropdown-${curUser._id}`}>
-                                                                        <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, 'Active')}>Active</button>
-                                                                        <button className="dropdown-item" onClick={() => handleStatusChange(curUser._id, 'In-active')}>In-active</button>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-
-                                                        </tr>
-                                                    );
-                                                })} */}
-
-
-                                            </tbody>
+                                           </tbody>
                                         </table>
 
                                     </div>

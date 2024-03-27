@@ -23,11 +23,28 @@ const getAllUsers = async (req, res) => {
 }
 
 
+const getOneMedicines = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const medicine = await Medicine.findById(id);
+        if (!medicine) {
+            return res.status(404).json({ message: 'Medicine not found' });
+        }
+
+
+        return res.status(200).json(medicine);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
 const getAllMedicines = async (req, res) => {
 
     try {
 
-        const medicines = await Medicine.find({}, { password: 0, cpassword: 0 });
+        const medicines = await Medicine.find({});
         // console.log(users);
 
         if (!medicines || medicines.length === 0) {
@@ -44,6 +61,26 @@ const getAllMedicines = async (req, res) => {
 }
 
 
+const updateMedicines = async (req, res) => {
+
+    const { id } = req.params;
+    const updateData = req.body;
+
+    try {
+        const updateMedicine = await Medicine.findByIdAndUpdate(id, updateData, { new: true });
+        console.log(updateMedicine);
+        if (!updateMedicine) {
+            return res.status(404).json({ error: 'Medicine not updated' });
+        }
+
+        res.status(200).json(updateMedicine);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+
+    }
+}
 const changeUserStatus = async (req, res) => {
 
     const { isValid } = req.body;
@@ -133,4 +170,4 @@ const getDoctor = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines };
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines };

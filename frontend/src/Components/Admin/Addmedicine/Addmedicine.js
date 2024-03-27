@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
 import './Addmedicine.css';
 
 import { toast } from 'react-toastify';
 
 
 const Addmedicine = () => {
+    const { id } = useParams();
+
+    const navigate = useNavigate();
+
+
 
     const [updateMode, setUpdateMode] = useState(false);
 
@@ -17,6 +26,39 @@ const Addmedicine = () => {
         usageInstructions: '',
         manufacturer: ''
     });
+
+
+    //fetching particular medicine
+    useEffect(() => {
+        const fetchMedicine = async () => {
+            try {
+                const response = await fetch(`http://localhost:6500/api/admin/medicinedetails/${id}`, {
+                    method: "GET",
+                });
+
+                const responseData = await response.json();
+                console.log(responseData);
+                if (response.status === 404) {
+                    toast.error(responseData.msg);
+                }
+                else if (response.status === 200) {
+                    setUpdateMode(true);
+                    setFormData(responseData);
+
+                } else {
+                    toast.error("Internal Server Error");
+                }
+            } catch (error) {
+                toast.error("Failed to fetch. Check console for details.");
+                console.error("Error:", error);
+            }
+        };
+
+        if (id) {
+            fetchMedicine();
+
+        }
+    }, [id]);
 
 
     const addMedicine = async (e) => {
@@ -57,6 +99,47 @@ const Addmedicine = () => {
         }
     };
 
+    //for updating post rouitng
+    const updateMedicine = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`http://localhost:6500/api/admin/updatetMedicine/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const responseData = await response.json();
+
+            if (response.status === 404) {
+                toast.error(responseData.msg);
+            } else if (response.status === 200) {
+                toast.success("Medicine updated successfully");
+
+
+                setFormData({
+                    name: '',
+                    dosage: '',
+                    sideEffects: [''],
+                    symptoms: [''],
+                    contraindications: [''],
+                    usageInstructions: '',
+                    manufacturer: ''
+
+                });
+                setUpdateMode(false);
+            } else {
+                toast.error("Internal Server Error");
+            }
+        } catch (error) {
+            toast.error("Failed to fetch. Check console for details.");
+            console.error("Error:", error);
+        }
+    };
+
     // following three function for adding
 
     const handleChange = (e, index, field) => {
@@ -81,11 +164,12 @@ const Addmedicine = () => {
         }));
     };
 
-    console.log(formData);
+    // console.log(formData);
 
     // following function for editing
 
     const handleCancelUpdate = () => {
+        navigate("/Admin/Addmedicine");
         setFormData({
             name: '',
             dosage: '',
@@ -96,7 +180,6 @@ const Addmedicine = () => {
             manufacturer: ''
         });
         setUpdateMode(false);
-        // setItemIdToUpdate(null);
     };
 
     return (
@@ -159,13 +242,11 @@ const Addmedicine = () => {
                                         {updateMode ? (
                                             <>
                                                 <div className="col-6 text-center">
-                                                    <button type="button" class="btn btn-primary mt-4">Update Medicine</button>
-                                                    {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
+                                                    <button type="button" class="btn btn-primary mt-4" onClick={updateMedicine}>Update Medicine</button>
                                                 </div>
 
                                                 <div className="col-6 text-center">
                                                     <button type="button" class="btn btn-primary mt-4" onClick={handleCancelUpdate}>Cancel Update</button>
-                                                    {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
                                                 </div>
                                             </>
                                         ) : (
@@ -173,7 +254,6 @@ const Addmedicine = () => {
 
                                                 <div className="col-12 text-center">
                                                     <button type="button" class="btn btn-primary mt-4" onClick={addMedicine}>Add Medicine</button>
-                                                    {/* <button type="submit" className="btn btn-primary mt-4">Submit</button> */}
                                                 </div>
 
                                             </>
@@ -191,122 +271,3 @@ const Addmedicine = () => {
 
 export default Addmedicine;
 
-
-// import React, { useEffect, useState } from 'react'
-// import './Addmedicine.css'
-// const Addmedicine = () => {
-//     return (
-//         <>
-//             <main id="main" class="main">
-//                 <section class="section">
-//                     <div class="row">
-//                         <div class="col-lg-12">
-
-//                             <div class="card">
-//                                 <div class="card-body">
-//                                     <h5 class="card-title title">Add Medicine</h5>
-//                                     <div>
-//                                         <form class="row g-3 mt-3">
-//                                             <div class="col-md-4">
-//                                                 <label for="inputName5" class="form-label">First Name</label>
-//                                                 <input type="text" class="form-control" id="inputName5" />
-//                                             </div>
-//                                             <div class="col-md-4">
-//                                                 <label for="inputName5" class="form-label">Middle Name</label>
-//                                                 <input type="text" class="form-control" id="inputName5" />
-//                                             </div>
-//                                             <div class="col-md-4">
-//                                                 <label for="inputName5" class="form-label">Last Name</label>
-//                                                 <input type="text" class="form-control" id="inputName5" />
-//                                             </div>
-//                                             <div class="col-md-2">
-//                                                 <label for="inputName5" class="form-label">Age</label>
-//                                                 <input type="text" class="form-control" id="inputName5" />
-//                                             </div>
-//                                             <div class="col-md-3">
-//                                                 <label for="inputEmail5" class="form-label">Email</label>
-//                                                 <input type="email" class="form-control" id="inputEmail5" />
-//                                             </div>
-//                                             <div class="col-md-3">
-//                                                 <label for="inputMobile5" class="form-label">Mobile Number</label>
-//                                                 <input type="text" class="form-control" id="inputMobile5" />
-//                                             </div>
-//                                             <div class="col-md-2">
-//                                                 <label for="inputCity5" class="form-label">City</label>
-//                                                 <input type="text" class="form-control" id="inputCity5" />
-//                                             </div>
-//                                             <div class="col-md-3">
-//                                                 <label for="inputCity5" class="form-label">Gender</label>
-
-//                                                 <div class="Container">
-//                                                     <div class="row">
-//                                                         <div class="form-check col-lg-4">
-//                                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked />
-//                                                             <label class="form-check-label" for="gridRadios1">
-//                                                                 Male
-//                                                             </label>
-//                                                         </div>
-//                                                         <div class="form-check col-lg-4">
-//                                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
-//                                                             <label class="form-check-label" for="gridRadios2">
-//                                                                 Female
-//                                                             </label>
-//                                                         </div>
-//                                                     </div>
-//                                                 </div>
-//                                             </div>
-//                                             <div class="col-md-3">
-//                                                 <label for="inputCity5" class="form-label">Date</label>
-//                                                 <input type="date" class="form-control" />
-//                                             </div>
-//                                             <div class="col-md-3">
-//                                                 <label for="inputCity5" class="form-label">Doctor</label>
-//                                                 <select class="form-select" aria-label="Default select example">
-//                                                     <option value="1">Dr. Amit Patel</option>
-//                                                     <option value="2">Dr. Yogendra Bhatt</option>
-//                                                     <option value="3">Dr. Nilay Shah</option>
-//                                                 </select>
-//                                             </div>
-//                                             <div class="col-md-3">
-//                                                 <label for="inputCity5" class="form-label">Time</label>
-//                                                 <select class="form-select" aria-label="Default select example">
-//                                                     <option value="1">10.30 AM - 11.00 AM</option>
-//                                                     <option value="2">11.00 AM - 11.30 AM</option>
-//                                                     <option value="3">05.00 PM - 5.30 PM</option>
-//                                                 </select>
-//                                             </div>
-//                                             <div class="col-md-12">
-//                                                 <label for="inputPassword" class="col-sm-2 col-md-6 col-form-label">Message for Appointment</label>
-//                                                 <div class="col-sm-10 col-md-12">
-//                                                     <textarea class="form-control" style={{ "height": "100px" }}></textarea>
-//                                                 </div>
-//                                             </div>
-
-//                                             {/*
-//                                             <div class="col-md-2">
-//                                                 <label for="inputZip" class="form-label">Zip</label>
-//                                                 <input type="text" class="form-control" id="inputZip" />
-//                                             </div> */}
-
-//                                             <div class="text-center ">
-//                                                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
-//                                             </div>
-//                                         </form>
-//                                     </div>
-
-
-//                                 </div>
-//                             </div>
-
-//                         </div>
-//                     </div>
-//                 </section>
-
-//             </main>
-
-
-//         </>
-//     )
-// }
-
-// export default Addmedicine
