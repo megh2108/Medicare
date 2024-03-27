@@ -38,8 +38,8 @@ const Footer = () => {
                                 <h4>Our Services</h4>
                                 <ul>
                                     <li><i className="bx bx-chevron-right"></i> <NavLink to="/Appointment">Doctor Appointment Booking</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Medicine Search</NavLink></li>
-                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Telemedicine Services</NavLink></li>
+                                    <li><i className="bx bx-chevron-right"></i> <NavLink to="/Medicine">Medicine Search</NavLink></li>
+                                    {/* <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Telemedicine Services</NavLink></li> */}
                                     <li><i className="bx bx-chevron-right"></i> <NavLink to="#">Chatbot Assistance</NavLink></li>
                                 </ul>
                             </div>

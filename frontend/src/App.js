@@ -97,6 +97,8 @@ const App = () => {
         <Route path="/Signup_Login" excact element={<Register />} />
         <Route path="/" excact element={<Home />} />
         <Route path="*" excact element={<Error />} />
+        {/* <Route path="/Addmedicine" excact element={<Addmedicine />} /> */}
+
 
 
         {/* user route */}

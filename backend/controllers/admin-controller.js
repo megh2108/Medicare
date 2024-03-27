@@ -82,7 +82,7 @@ const insertMedicine = async (req, res) => {
         });
 
         if (!medicineCreated) {
-            return res.status(500).json({ message: "Failed to create user" });
+            return res.status(500).json({ message: "Failed to create medicine" });
         }
 
         res.status(201).json({ message: "Medicine inserted successfully" });
