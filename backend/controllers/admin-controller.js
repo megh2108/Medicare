@@ -169,4 +169,22 @@ const getDoctor = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines };
+
+const getOneDoctor = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const doctor = await User.findById(id,{ password: 0, cpassword: 0 });
+        if (!doctor || doctor.length === 0) {
+            return res.status(404).json({ message: "No doctor Found" });
+
+        }
+
+        // console.log(doctor);
+        return res.status(200).json(doctor);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneDoctor };

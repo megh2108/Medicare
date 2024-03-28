@@ -13,5 +13,6 @@ router.route('/updateUserStatus/:userId').put(authMiddleware,adminControllers.ch
 router.route('/insertMedicine').post(adminControllers.insertMedicine);
 router.route('/getMedicine').get(adminControllers.getMedicine);
 router.route('/getDoctor').get(adminControllers.getDoctor);
+router.route('/getOneDoctor/:id').get(adminControllers.getOneDoctor);
 
 module.exports = router

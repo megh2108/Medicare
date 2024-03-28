@@ -10,26 +10,28 @@ import { toast } from 'react-toastify';
 const Doctorprofile = () => {
     const { id } = useParams();
 
+    const [doctor, setDoctor] = useState([]);
+
+
     //fetching particular doctor
     useEffect(() => {
         const fetchDoctor = async () => {
             try {
-                const response = await fetch(`http://localhost:6500/api/auth/doctoredetails/${id}`, {
+                const response = await fetch(`http://localhost:6500/api/admin/getOneDoctor/${id}`, {
                     method: "GET",
                 });
 
                 const responseData = await response.json();
                 console.log(responseData);
-                // if (response.status === 404) {
-                //     toast.error(responseData.msg);
-                // }
-                // else if (response.status === 200) {
-                //     setUpdateMode(true);
-                //     setFormData(responseData);
+                if (response.status === 404) {
+                    toast.error(responseData.msg);
+                }
+                else if (response.status === 200) {
+                    setDoctor(responseData);
 
-                // } else {
-                //     toast.error("Internal Server Error");
-                // }
+                } else {
+                    toast.error("Internal Server Error");
+                }
             } catch (error) {
                 toast.error("Failed to fetch. Check console for details.");
                 console.error("Error:", error);
@@ -52,8 +54,10 @@ const Doctorprofile = () => {
                                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                                     <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
-                                    <h2>Dr. Amit Patel</h2>
-                                    <h3>Orthopedic Surgen</h3>
+                                    <h2>{doctor.name}</h2>
+                                    {/* <h2>Dr. Amit Patel</h2> */}
+                                    <h3>{doctor.special}</h3>
+                                    {/* <h3>Orthopedic Surgen</h3> */}
                                     <div className="social-links mt-2">
                                         <NavLink to="#" className="twitter"><i className="bi bi-twitter"></i></NavLink>
                                         <NavLink to="#" className="facebook"><i className="bi bi-facebook"></i></NavLink>
@@ -91,22 +95,26 @@ const Doctorprofile = () => {
 
                                         <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                             <h5 class="card-title">About</h5>
-                                            <p class="small fst-italic">Dr. Amit Patel is a highly skilled and compassionate physician specializing in Internal Medicine. With a wealth of knowledge and over 10 years of clinical experience, Dr. Patel is dedicated to providing comprehensive and personalized healthcare to his patients. His commitment to staying abreast of the latest medical advancements ensures that individuals under his care receive the highest standard of treatment.      </p>
+                                            <p class="small fst-italic">{doctor.about}</p>
+                                            {/* <p class="small fst-italic">Dr. Amit Patel is a highly skilled and compassionate physician specializing in Internal Medicine. With a wealth of knowledge and over 10 years of clinical experience, Dr. Patel is dedicated to providing comprehensive and personalized healthcare to his patients. His commitment to staying abreast of the latest medical advancements ensures that individuals under his care receive the highest standard of treatment.      </p> */}
 
                                             <h5 class="card-title">Basic Details</h5>
 
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                                <div class="col-lg-9 col-md-8">Dr. Amit Patel</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.name}</div>
+                                                {/* <div class="col-lg-9 col-md-8">Dr. Amit Patel</div> */}
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Email</div>
-                                                <div class="col-lg-9 col-md-8">amitpatel@gmail.com</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.email}</div>
+                                                {/* <div class="col-lg-9 col-md-8">amitpatel@gmail.com</div> */}
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Contact No</div>
-                                                <div class="col-lg-9 col-md-8">+91 98765 43210</div>
+                                                <div class="col-lg-9 col-md-8">+91 {doctor.phone}</div>
+                                                {/* <div class="col-lg-9 col-md-8">+91 98765 43210</div> */}
                                             </div>
 
 
@@ -114,25 +122,30 @@ const Doctorprofile = () => {
 
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Medical License Number</div>
-                                                <div class="col-lg-9 col-md-8">M123456789</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.licenceno}</div>
+                                                {/* <div class="col-lg-9 col-md-8">M123456789</div> */}
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Specialization</div>
-                                                <div class="col-lg-9 col-md-8">Othopedic</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.special}</div>
+                                                {/* <div class="col-lg-9 col-md-8">Othopedic</div> */}
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Qualifications</div>
-                                                <div class="col-lg-9 col-md-8">Doctor of Medicine (MD), University of Medical Sciences, 2005</div>
-                                                <div class="col-lg-3 col-md-4 label"></div>
-                                                <div class="col-lg-9 col-md-8">Board Certified in Cardiology</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.qualification}</div>
+                                                {/* <div class="col-lg-9 col-md-8">Doctor of Medicine (MD), University of Medical Sciences, 2005</div> */}
+                                                {/* <div class="col-lg-3 col-md-4 label"></div> */}
+                                                {/* <div class="col-lg-9 col-md-8">Board Certified in Cardiology</div> */}
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Years of Experience</div>
-                                                <div class="col-lg-9 col-md-8">15 years</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.experience}</div>
+                                                {/* <div class="col-lg-9 col-md-8">15 years</div> */}
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 label">Hospital Affiliation</div>
-                                                <div class="col-lg-9 col-md-8">Iris Hospital, Anand</div>
+                                                <div class="col-lg-9 col-md-8">{doctor.hospitalAffiliaion}</div>
+                                                {/* <div class="col-lg-9 col-md-8">Iris Hospital, Anand</div> */}
                                             </div>
                                         </div>
 

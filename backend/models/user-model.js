@@ -43,6 +43,19 @@ const userSchema = new mongoose.Schema({
             return this.type === 'doctor';
         }
     },
+    about: {
+        type: String,        
+    },
+    qualification: {
+        type: String,        
+    },
+    experience: {
+        type: String,        
+    },
+    hospitalAffiliaion: {
+        type: String,        
+    },
+    //available time and photo
     secretkey: {
         type: String,
         required: function () {
