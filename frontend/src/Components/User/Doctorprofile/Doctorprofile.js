@@ -1,9 +1,44 @@
 import React from 'react'
 import "./Doctorprofile.css"
 import { NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 
 const Doctorprofile = () => {
+    const { id } = useParams();
+
+    //fetching particular doctor
+    useEffect(() => {
+        const fetchDoctor = async () => {
+            try {
+                const response = await fetch(`http://localhost:6500/api/auth/doctoredetails/${id}`, {
+                    method: "GET",
+                });
+
+                const responseData = await response.json();
+                console.log(responseData);
+                // if (response.status === 404) {
+                //     toast.error(responseData.msg);
+                // }
+                // else if (response.status === 200) {
+                //     setUpdateMode(true);
+                //     setFormData(responseData);
+
+                // } else {
+                //     toast.error("Internal Server Error");
+                // }
+            } catch (error) {
+                toast.error("Failed to fetch. Check console for details.");
+                console.error("Error:", error);
+            }
+        };
+
+        if (id) {
+            fetchDoctor();
+
+        }
+    }, [id]);
     return (
         <>
             <section class="section profile doctor-profile"  data-aos="zoom-in">

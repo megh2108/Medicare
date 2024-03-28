@@ -103,6 +103,7 @@ const App = () => {
 
         {/* user route */}
         <Route path="/Docorprofile" excact element={<Doctorprofile />} />
+        <Route path="/Docorprofile/:id" excact element={<Doctorprofile />} />
         <Route path="/Appointment" excact element={<Appointment />} />
         <Route path="/Doctor_Page" excact element={<Doctor_Page />} />
 
