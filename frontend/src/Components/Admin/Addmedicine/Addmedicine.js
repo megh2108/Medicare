@@ -53,7 +53,7 @@ const Addmedicine = () => {
                 console.error("Error:", error);
             }
         };
-
+        console.log(id);
         if (id) {
             fetchMedicine();
 
