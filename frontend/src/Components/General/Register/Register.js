@@ -171,6 +171,8 @@ const Register = () => {
                 console.log("Patient Login Successfully");
 
                 storeTokenInLS(responseData.token);
+                userId(responseData.userId);
+
 
                 setEmails("");
                 setPasswords("");
