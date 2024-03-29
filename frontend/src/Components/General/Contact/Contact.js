@@ -122,7 +122,7 @@ const Contact = () => {
                                 </div> */}
                                 <div className="text-center">
                                     {/* <button type="submit"></button> */}
-                                    <button type="button" class="btn btn-primary" onClick={SendMessage}>Send Message</button>
+                                    <button type="button" class="btn btn-primary mt-3" onClick={SendMessage}>Send Message</button>
 
                                 </div>
                             </form>
