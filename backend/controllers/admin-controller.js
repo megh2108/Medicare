@@ -187,4 +187,22 @@ const getOneDoctor = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneDoctor };
+
+const updateDoctor = async (req, res) => {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    try {
+        const updateDoctor = await User.findByIdAndUpdate(id, updateData, { new: true });
+        if (!updateDoctor) {
+            return res.status(404).json({ error: 'Doctor not updated' });
+        }
+
+        res.status(200).json(updateDoctor);
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneDoctor, updateDoctor };

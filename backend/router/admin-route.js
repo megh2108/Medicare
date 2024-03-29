@@ -14,5 +14,6 @@ router.route('/insertMedicine').post(adminControllers.insertMedicine);
 router.route('/getMedicine').get(adminControllers.getMedicine);
 router.route('/getDoctor').get(adminControllers.getDoctor);
 router.route('/getOneDoctor/:id').get(adminControllers.getOneDoctor);
+router.route('/updateDoctor/:id').put(adminControllers.updateDoctor);
 
 module.exports = router

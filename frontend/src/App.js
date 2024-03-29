@@ -33,6 +33,7 @@ import Userdetail from './Components/Admin/Userdetails/Userdetail';
 import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import Medicinedetail from './Components/Admin/Medicinedetails/Medicinedetail';
 import Addmedicine from './Components/Admin/Addmedicine/Addmedicine';
+import Yourprofile from './Components/General/Yourprofile/Yourprofile';
 
 const App = () => {
 
@@ -106,6 +107,7 @@ const App = () => {
         <Route path="/Doctorprofile/:id" excact element={<Doctorprofile />} />
         <Route path="/Appointment" excact element={<Appointment />} />
         <Route path="/Doctor_Page" excact element={<Doctor_Page />} />
+        <Route path="/Yourprofile" excact element={<Yourprofile />} />
 
 
         <Route path="/Admin" excact element={<Sidebar /> } >

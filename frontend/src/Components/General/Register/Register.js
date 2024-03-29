@@ -10,6 +10,7 @@ const Register = () => {
 
     const navigate = useNavigate();
     const {storeTokenInLS} = useAuth();
+    const {userId} = useAuth();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -181,6 +182,7 @@ const Register = () => {
                 console.log("Doctor Login Successfully");
 
                 storeTokenInLS(responseData.token);
+                userId(responseData.userId);
 
                 setEmails("");
                 setPasswords("");

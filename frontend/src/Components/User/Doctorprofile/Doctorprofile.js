@@ -270,7 +270,7 @@ const Doctorprofile = () => {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
         </>
     )
 }

@@ -119,10 +119,14 @@ const Navbar = () => {
               <li><NavLink className="nav-link scrollto abc" to="/Contact">Contact</NavLink></li>
 
               {isLoggedIn ? (
-                <li><NavLink className="nav-link scrollto" to="/Logout">Logout</NavLink></li>
-                ) : (
-                  <li><NavLink className="nav-link scrollto abc" to="/Signup_Login">Signup/Login</NavLink></li>
-                )}
+
+                <>
+                  <li><NavLink className="nav-link scrollto abc" to="/Yourprofile">Your Profile</NavLink></li>
+                  <li><NavLink className="nav-link scrollto" to="/Logout">Logout</NavLink></li>
+                </>
+              ) : (
+                <li><NavLink className="nav-link scrollto abc" to="/Signup_Login">Signup/Login</NavLink></li>
+              )}
               {/* <li><NavLink className="nav-link scrollto abc" to="/Signup_Login">Signup/Login</NavLink></li> */}
               {/* <li><NavLink className="nav-link scrollto" to="/Logout">Logout</NavLink></li> */}
 

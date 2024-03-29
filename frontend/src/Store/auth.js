@@ -9,6 +9,8 @@ export const AuthProvider = ({ children }) => {
     
     
     const [token, setToken] = useState("");
+    const [id, setId] = useState("");
+
     const navigate = useNavigate();
     
     // const [token, setToken] = useState(localStorage.getItem("Medicare_Token"));
@@ -47,6 +49,13 @@ export const AuthProvider = ({ children }) => {
         return localStorage.setItem("Medicare_Token",serverToken);
     } 
 
+
+    //for fetching login userid
+
+    const userId = (id) =>{
+        setId(id);
+    }
+
     //for toggling logout or login/signup
     let isLoggedIn = !!token;
     console.log("token", token);
@@ -63,7 +72,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <Authcontext.Provider value={{storeTokenInLS, logoutUser, isLoggedIn, token, adminAuthentication}} >
+        <Authcontext.Provider value={{storeTokenInLS, logoutUser, isLoggedIn, token, adminAuthentication, userId,id}} >
             {children}
         </Authcontext.Provider>
     )
