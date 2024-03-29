@@ -10,6 +10,7 @@ const loginSchema = require("../validators/auth-validator");
 
 router.route("/").get(authControllers.home);
 router.route("/register").post(validate(signupSchema),authControllers.register);
+router.route("/contact").post(authControllers.contact);
 router.route("/login").post(authControllers.login);
 // router.route("/login").post(validate(loginSchema),authControllers.login);
 router.route("/admin-auth").get(authMiddleware, authControllers.adminauth);

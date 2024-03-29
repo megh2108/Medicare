@@ -1,5 +1,6 @@
 const User = require("../models/user-model");
 const Medicine = require("../models/medicine-model");
+const Conatct = require("../models/contact-model");
 
 const home = (req, res) => {
 
@@ -94,6 +95,34 @@ const login = async (req, res) => {
     }
 };
 
+
+const contact = async (req, res) => {
+    try {
+
+        const { name, email, subject, message } = req.body;
+
+
+        const messageCreated = await Conatct.create({
+            name, email, subject, message
+        });
+
+
+        if (!messageCreated) {
+            return res.status(500).json({ message: "Failed to submit message" });
+        }
+
+        // res.status(201).json({ message: "User registered successfully" });
+        res.status(201).json({ msg: "Message Submit Successfull"});
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+
+
+    }
+};
+
+
 const adminauth = async (req,res) => {
     try {
         const userData = req.user;
@@ -111,4 +140,4 @@ const adminauth = async (req,res) => {
 }
 
 
-module.exports = { home, register, login, adminauth };
+module.exports = { home, register, login, contact, adminauth };

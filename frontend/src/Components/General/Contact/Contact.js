@@ -1,7 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Contact.css'
 
+import { toast } from 'react-toastify';
+
 const Contact = () => {
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+
+    const SendMessage = async (e) => {
+        e.preventDefault();
+
+        const requestBody = {
+            name, email, subject, message
+        };
+
+        
+        // console.log(requestBody);
+
+
+        try {
+            const response = await fetch("http://localhost:6500/api/auth/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(requestBody),
+            });
+            const responseData = await response.json();
+            // console.log("response", responseData);
+            // console.log("response status : ", response.status);
+
+           if (response.status === 201) {
+                toast.success("Message Submitted Successfull");
+                console.log("Message Submitted Registration");
+
+                setName("");
+                setEmail("");
+                setSubject("");
+                setMessage("");
+                
+                // navigate("/Signup_Login");
+
+            }
+            else {
+                toast.error("Internal Server Error");
+                console.log("error inside response ", "error");
+            }
+        } catch (error) {
+            toast.error("Failed to fetch. Check console for details.");
+            console.error("Error:", error);
+        }
+    };
+
     return (
         <>
             <section id="contact" className="contact section-bg">
@@ -14,7 +67,7 @@ const Contact = () => {
 
                     <div className="row" >
 
-                        <div className="col-lg-6"  data-aos="fade-right">
+                        <div className="col-lg-6" data-aos="fade-right">
 
                             <div className="row">
                                 <div className="col-md-12">
@@ -42,28 +95,36 @@ const Contact = () => {
 
                         </div>
 
-                        <div className="col-lg-6 mt-4 mt-md-0"  data-aos="fade-left">
-                            <form action="forms/contact.php" method="post" role="form" className="php-email-form">
+                        <div className="col-lg-6 mt-4 mt-md-0" data-aos="fade-left">
+                            <form role="form" className="php-email-form">
                                 <div className="row">
                                     <div className="col-md-6 form-group">
-                                        <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
+                                        <input type="text" className="form-control" id="name" placeholder="Your Name" required
+                                            name="name" value={name} onChange={(e) => setName(e.target.value)} />
                                     </div>
                                     <div className="col-md-6 form-group mt-3 mt-md-0">
-                                        <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
+                                        <input type="email" className="form-control" id="email" placeholder="Your Email" required
+                                            name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="form-group mt-3">
-                                    <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
+                                    <input type="text" className="form-control" id="subject" placeholder="Subject" required
+                                        name="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
                                 </div>
                                 <div className="form-group mt-3">
-                                    <textarea className="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                    <textarea className="form-control" rows="5" placeholder="Message" required
+                                        name="message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
                                 </div>
-                                <div className="my-3">
+                                {/* <div className="my-3">
                                     <div className="loading">Loading</div>
                                     <div className="error-message"></div>
                                     <div className="sent-message">Your message has been sent. Thank you!</div>
+                                </div> */}
+                                <div className="text-center">
+                                    {/* <button type="submit"></button> */}
+                                    <button type="button" class="btn btn-primary" onClick={SendMessage}>Send Message</button>
+
                                 </div>
-                                <div className="text-center"><button type="submit">Send Message</button></div>
                             </form>
                         </div>
 
