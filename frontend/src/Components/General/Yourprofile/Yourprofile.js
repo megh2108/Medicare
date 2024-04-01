@@ -10,14 +10,9 @@ import { useAuth } from '../../../Store/auth';
 const Yourprofile = () => {
     // const { id } = useParams();
 
-    const { id } = useAuth();
-    const { formData } = useAuth();
-    const { setFormData } = useAuth();
+    const { id, formData, setFormData } = useAuth();
+ 
 
-
-   
-
-    
 
     //for updating post rouitng
     const updateProfile = async (e) => {
@@ -58,6 +53,18 @@ const Yourprofile = () => {
             console.error("Error:", error);
         }
     };
+
+    const convertToBase64 = (e) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            setFormData({ ...formData, formData: reader.result });
+        };
+        reader.onerror = (error) => {
+            console.log("Error: ", error);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    };
+
 
     return (
         <>
@@ -103,7 +110,7 @@ const Yourprofile = () => {
                                             <form>
                                                 <h5 class="card-title">Basic Details</h5>
                                                 <div class="row mb-3">
-                                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                                    <label for="image" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <img src="assets/img/profile-img.jpg" alt="Profile" />
                                                         <div class="pt-2">

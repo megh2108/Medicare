@@ -33,6 +33,7 @@ const signupSchema = z.object({
     qualification: z.string().optional(),
     experience: z.string().optional(),
     hospitalAffiliaion: z.string().optional(),
+    image: z.string().optional(),
     secretkey: z.string().optional(),
     isValid: z.enum(['Active', 'In-active']).default('In-active'),
 });
@@ -56,6 +57,11 @@ const loginSchema = z.object({
     type: z.enum().optional(),
     licenceno: z.string().optional(),
     special: z.string().optional(),
+    about: z.string().optional(),
+    qualification: z.string().optional(),
+    experience: z.string().optional(),
+    hospitalAffiliaion: z.string().optional(),
+    image: z.string().optional(),
     secretkey: z.string().optional(),
     isValid: z.enum().optional(),
 

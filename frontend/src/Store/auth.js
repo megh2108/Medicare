@@ -78,6 +78,7 @@ export const AuthProvider = ({ children }) => {
         qualification: '',
         experience: '',
         hospitalAffiliaion: '',
+        image:''
 
     });
 
