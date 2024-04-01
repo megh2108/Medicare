@@ -24,7 +24,7 @@ const Userdetail = () => {
       });
 
       const responseData = await response.json();
-      // console.log(`users : ${responseData}`);
+      console.log(`users : ${responseData}`);
       setUsers(responseData);
 
 
@@ -52,16 +52,21 @@ const Userdetail = () => {
             body: JSON.stringify({ isValid: newStatus }),
         });
 
+        const responseData = await response.json();
+
         if (response.status === 200) {
-            console.log(`User status updated to ${newStatus}`);
-            toast.success(`User status updated to ${newStatus}`);
+            console.log(`User status updated to ${newStatus} and mail transfer to ${responseData.email}`);
+            toast.success(`${responseData.name} status updated to ${newStatus}`);
 
             setUsers((prevUsers) =>
             prevUsers.map((user) =>
                     user._id === userId ? { ...user, isValid: newStatus } : user
                 )
             );
-        } else {
+        }else if(response.status === 400){
+          toast.error(`Mail Transfer failed to ${responseData.email}`);
+
+        }else {
             console.log("Failed to update User status");
             toast.error("Failed to update User status");
         }

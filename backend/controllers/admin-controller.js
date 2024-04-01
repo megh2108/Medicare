@@ -103,26 +103,39 @@ const changeUserStatus = async (req, res) => {
             userId, { $set: { isValid } }, { new: true }
         );
 
-        console.log(updatedUserStatus);
-
-        const html =`<h2>Hello ${updatedUserStatus.name}</h2>
+        var html;
+        if (isValid == 'Active'){
+            
+         html = `<h2>HealthEase Platform</h2><br> 
+                    <h3>Hello ${updatedUserStatus.name}</h3>
                     <h3>Admin accepted your request successfully.</h3> 
-                    <h3>You are authorized for login.</h3> 
+                    <h3>You are authorized for login.</h3> <br>
+                    <h4>Thanks</h4> 
                     `;
+        }
+        else{
+             html = `<h2>HealthEase Platform</h2><br> 
+            <h3>Hello ${updatedUserStatus.name}</h3>
+            <h3>Admin rejected your request.</h3> 
+            <h3>You are not authorized for login.</h3> <br>
+            <h4>Thanks</h4> 
+            `;
+        }
 
         const mailOptions = {
-            from: 'meghshah0410@gmail.com', 
-            to: '20cp041@bvmengineering.ac.in',
-            subject: subject,
-            html:html,
+            from: 'meghshah0410@gmail.com',
+            to: updatedUserStatus.email,
+            subject: 'Confirmation about authorization from HealthEase',
+            html: html,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.error('Error sending email:', error);
+                return res.status(400).json({ msg: "mail sent error." });
             } else {
                 console.log('Email sent:', info.response);
-            }   
+            }
             console.log("mail transfer");
         });
         res.status(200).json(updatedUserStatus);
@@ -207,7 +220,7 @@ const getDoctor = async (req, res) => {
 const getOneUser = async (req, res) => {
     const { id } = req.params;
     try {
-        const user = await User.findById(id,{ password: 0, cpassword: 0 });
+        const user = await User.findById(id, { password: 0, cpassword: 0 });
         if (!user || user.length === 0) {
             return res.status(404).json({ message: "No doctor Found" });
 
