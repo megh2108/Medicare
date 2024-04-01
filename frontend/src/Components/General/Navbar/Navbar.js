@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 
 import { useAuth } from '../../../Store/auth';
 
@@ -42,7 +44,65 @@ const Navbar = () => {
   const { isLoggedIn } = useAuth();
   console.log("login or not ", isLoggedIn);
 
+  const { id } = useAuth();
 
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    about: '',
+    licenceno: '',
+    special: '',
+    qualification: '',
+    experience: '',
+    hospitalAffiliaion: '',
+
+  });
+
+  //fetching particular user
+  useEffect(() => {
+    const fetchUserById = async () => {
+      try {
+        const response = await fetch(`http://localhost:6500/api/admin/getOneUser/${id}`, {
+          method: "GET",
+        });
+
+        const responseData = await response.json();
+
+        if (response.status === 404) {
+          toast.error(responseData.msg);
+        }
+        else if (response.status === 200) {
+
+          const mappedData = {
+            name: responseData.name || '',
+            email: responseData.email || '',
+            phone: responseData.phone || '',
+            about: responseData.about || '',
+            licenceno: responseData.licenceno || '',
+            special: responseData.special || '',
+            qualification: responseData.qualification || '',
+            experience: responseData.experience || '',
+            hospitalAffiliaion: responseData.hospitalAffiliaion || '',
+          };
+          setFormData(mappedData);
+
+
+        } else {
+          toast.error("Internal Server Error");
+        }
+      } catch (error) {
+        toast.error("Failed to fetch. Check console for details.");
+        console.error("Error:", error);
+      }
+    };
+
+    if (id) {
+      fetchUserById();
+
+    }
+  }, [id]);
 
   useEffect(() => {
 
@@ -133,8 +193,9 @@ const Navbar = () => {
 
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                       <li className="dropdown-header header-prof">
-                        <h6>Kevin Anderson</h6>
-                        <span>Web Designer</span>
+                        <h6>{formData.name}</h6>
+                        {/* <h6>Kevin Anderson</h6> */}
+                        {/* <span>Web Designer</span> */}
                       </li>
                       <li>
                         <hr className="dropdown-divider" />
@@ -177,16 +238,7 @@ const Navbar = () => {
               ) : (
                 <li><NavLink className="nav-link scrollto abc" to="/Signup_Login">Signup/Login</NavLink></li>
               )}
-              {/* <li><NavLink className="nav-link scrollto abc" to="/Signup_Login">Signup/Login</NavLink></li> */}
-              {/* <li><NavLink className="nav-link scrollto" to="/Logout">Logout</NavLink></li> */}
-
-              {/* <li className="dropdown"><NavLink to="#"><span>Login / Signup</span> <i className="bi bi-chevron-down"></i></NavLink>
-                                <ul>
-                                    <li><NavLink to="/Login">Login</NavLink></li>
-                                    <li><NavLink to="/Signup">Signup</NavLink></li>
-                                   
-                                </ul>
-                            </li> */}
+             
               <li><NavLink className="getstarted scrollto" to="/Appointment">Book Appointment</NavLink></li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
