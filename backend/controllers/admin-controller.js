@@ -1,6 +1,18 @@
 const User = require("../models/user-model");
 const Medicine = require("../models/medicine-model");
 
+const nodemailer = require('nodemailer');
+
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'meghshah0410@gmail.com',
+        pass: 'dlqt mqqp oobu cxok',
+    },
+});
 
 const getAllUsers = async (req, res) => {
 
@@ -91,6 +103,28 @@ const changeUserStatus = async (req, res) => {
             userId, { $set: { isValid } }, { new: true }
         );
 
+        console.log(updatedUserStatus);
+
+        const html =`<h2>Hello ${updatedUserStatus.name}</h2>
+                    <h3>Admin accepted your request successfully.</h3> 
+                    <h3>You are authorized for login.</h3> 
+                    `;
+
+        const mailOptions = {
+            from: 'meghshah0410@gmail.com', 
+            to: '20cp041@bvmengineering.ac.in',
+            subject: subject,
+            html:html,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }   
+            console.log("mail transfer");
+        });
         res.status(200).json(updatedUserStatus);
 
 
