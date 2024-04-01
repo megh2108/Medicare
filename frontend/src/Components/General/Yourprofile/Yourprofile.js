@@ -26,17 +26,16 @@ const Yourprofile = () => {
 
     });
 
-    //fetching particular doctor
+    //fetching particular user
     useEffect(() => {
-        const fetchDoctor = async () => {
+        const fetchUserById = async () => {
             try {
-                const response = await fetch(`http://localhost:6500/api/admin/getOneDoctor/${id}`, {
+                const response = await fetch(`http://localhost:6500/api/admin/getOneUser/${id}`, {
                     method: "GET",
                 });
 
                 const responseData = await response.json();
-                // console.log("response from backend in frontend");
-                // console.log(responseData);
+                
                 if (response.status === 404) {
                     toast.error(responseData.msg);
                 }
@@ -54,8 +53,7 @@ const Yourprofile = () => {
                         hospitalAffiliaion: responseData.hospitalAffiliaion || '', 
                     };
                     setFormData(mappedData);
-                    // console.log("after set form data");
-                    // console.log(formData);
+                    
 
                 } else {
                     toast.error("Internal Server Error");
@@ -67,7 +65,7 @@ const Yourprofile = () => {
         };
 
         if (id) {
-            fetchDoctor();
+            fetchUserById();
 
         }
     }, [id]);
@@ -77,7 +75,7 @@ const Yourprofile = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:6500/api/admin/updateDoctor/${id}`, {
+            const response = await fetch(`http://localhost:6500/api/admin/updateUser/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -103,7 +101,6 @@ const Yourprofile = () => {
                 //     manufacturer: ''
 
                 // });
-                // setUpdateMode(false);
             } else {
                 toast.error("Internal Server Error");
             }
@@ -113,7 +110,6 @@ const Yourprofile = () => {
         }
     };
 
-    //    console.log(formData);
     return (
         <>
             <section class="section profile doctor-profile" data-aos="zoom-in">

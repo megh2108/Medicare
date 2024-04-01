@@ -170,17 +170,16 @@ const getDoctor = async (req, res) => {
 };
 
 
-const getOneDoctor = async (req, res) => {
+const getOneUser = async (req, res) => {
     const { id } = req.params;
     try {
-        const doctor = await User.findById(id,{ password: 0, cpassword: 0 });
-        if (!doctor || doctor.length === 0) {
+        const user = await User.findById(id,{ password: 0, cpassword: 0 });
+        if (!user || user.length === 0) {
             return res.status(404).json({ message: "No doctor Found" });
 
         }
 
-        // console.log(doctor);
-        return res.status(200).json(doctor);
+        return res.status(200).json(user);
 
 
     } catch (error) {
@@ -188,21 +187,21 @@ const getOneDoctor = async (req, res) => {
     }
 }
 
-const updateDoctor = async (req, res) => {
+const updateUser = async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
 
     try {
-        const updateDoctor = await User.findByIdAndUpdate(id, updateData, { new: true });
-        if (!updateDoctor) {
+        const updateUser = await User.findByIdAndUpdate(id, updateData, { new: true });
+        if (!updateUser) {
             return res.status(404).json({ error: 'Doctor not updated' });
         }
 
-        res.status(200).json(updateDoctor);
+        res.status(200).json(updateUser);
 
     } catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneDoctor, updateDoctor };
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser };

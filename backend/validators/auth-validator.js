@@ -29,6 +29,10 @@ const signupSchema = z.object({
     type: z.enum(['patient', 'doctor', 'admin']),
     licenceno: z.string().optional(),
     special: z.string().optional(),
+    about: z.string().optional(),
+    qualification: z.string().optional(),
+    experience: z.string().optional(),
+    hospitalAffiliaion: z.string().optional(),
     secretkey: z.string().optional(),
     isValid: z.enum(['Active', 'In-active']).default('In-active'),
 });

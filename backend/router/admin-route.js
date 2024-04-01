@@ -13,7 +13,7 @@ router.route('/updateUserStatus/:userId').put(authMiddleware,adminControllers.ch
 router.route('/insertMedicine').post(adminControllers.insertMedicine);
 router.route('/getMedicine').get(adminControllers.getMedicine);
 router.route('/getDoctor').get(adminControllers.getDoctor);
-router.route('/getOneDoctor/:id').get(adminControllers.getOneDoctor);
-router.route('/updateDoctor/:id').put(adminControllers.updateDoctor);
+router.route('/getOneUser/:id').get(adminControllers.getOneUser);
+router.route('/updateUser/:id').put(adminControllers.updateUser);
 
 module.exports = router

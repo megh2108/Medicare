@@ -17,10 +17,6 @@ const Contact = () => {
             name, email, subject, message
         };
 
-        
-        // console.log(requestBody);
-
-
         try {
             const response = await fetch("http://localhost:6500/api/auth/contact", {
                 method: "POST",

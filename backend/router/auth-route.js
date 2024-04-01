@@ -7,10 +7,13 @@ const authMiddleware = require("../middlewares/auth-middleware");
 const validate = require("../middlewares/validate-middleware");
 const signupSchema = require("../validators/auth-validator");
 const loginSchema = require("../validators/auth-validator");
+const contactSchema = require("../validators/contact-validator");
+
 
 router.route("/").get(authControllers.home);
 router.route("/register").post(validate(signupSchema),authControllers.register);
-router.route("/contact").post(authControllers.contact);
+router.route("/contact").post(validate(contactSchema),authControllers.contact);
+// router.route("/contact").post(authControllers.contact);
 router.route("/login").post(authControllers.login);
 // router.route("/login").post(validate(loginSchema),authControllers.login);
 router.route("/admin-auth").get(authMiddleware, authControllers.adminauth);
