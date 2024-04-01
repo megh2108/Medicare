@@ -44,65 +44,7 @@ const Navbar = () => {
   const { isLoggedIn } = useAuth();
   console.log("login or not ", isLoggedIn);
 
-  const { id } = useAuth();
-
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    about: '',
-    licenceno: '',
-    special: '',
-    qualification: '',
-    experience: '',
-    hospitalAffiliaion: '',
-
-  });
-
-  //fetching particular user
-  useEffect(() => {
-    const fetchUserById = async () => {
-      try {
-        const response = await fetch(`http://localhost:6500/api/admin/getOneUser/${id}`, {
-          method: "GET",
-        });
-
-        const responseData = await response.json();
-
-        if (response.status === 404) {
-          toast.error(responseData.msg);
-        }
-        else if (response.status === 200) {
-
-          const mappedData = {
-            name: responseData.name || '',
-            email: responseData.email || '',
-            phone: responseData.phone || '',
-            about: responseData.about || '',
-            licenceno: responseData.licenceno || '',
-            special: responseData.special || '',
-            qualification: responseData.qualification || '',
-            experience: responseData.experience || '',
-            hospitalAffiliaion: responseData.hospitalAffiliaion || '',
-          };
-          setFormData(mappedData);
-
-
-        } else {
-          toast.error("Internal Server Error");
-        }
-      } catch (error) {
-        toast.error("Failed to fetch. Check console for details.");
-        console.error("Error:", error);
-      }
-    };
-
-    if (id) {
-      fetchUserById();
-
-    }
-  }, [id]);
+  const { formData } = useAuth();
 
   useEffect(() => {
 

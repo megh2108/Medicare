@@ -5,10 +5,13 @@ import { useParams } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
+import { useAuth } from '../../../Store/auth';
 
 
 const Doctorprofile = () => {
     const { id } = useParams();
+
+    
 
     const [doctor, setDoctor] = useState([]);
 
@@ -17,7 +20,7 @@ const Doctorprofile = () => {
     useEffect(() => {
         const fetchDoctor = async () => {
             try {
-                const response = await fetch(`http://localhost:6500/api/admin/getOneDoctor/${id}`, {
+                const response = await fetch(`http://localhost:6500/api/admin/getOneUser/${id}`, {
                     method: "GET",
                 });
 
