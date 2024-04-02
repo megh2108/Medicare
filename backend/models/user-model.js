@@ -58,6 +58,10 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String, 
     },
+    availableTime: [{ 
+        startTime: { type: String },
+        endTime: { type: String }
+    }],// Array of available time slots
     //available time and photo
     secretkey: {
         type: String,
