@@ -78,7 +78,8 @@ export const AuthProvider = ({ children }) => {
         qualification: '',
         experience: '',
         hospitalAffiliaion: '',
-        image:''
+        image:'',
+        availableTime: [{ startTime: '', endTime: '' }]
 
     });
 
@@ -109,6 +110,8 @@ export const AuthProvider = ({ children }) => {
                         qualification: responseData.qualification || '',
                         experience: responseData.experience || '',
                         hospitalAffiliaion: responseData.hospitalAffiliaion || '',
+                        image:responseData.image || '',
+                        availableTime: [{ startTime: responseData.availableTime.startTime || '', endTime: responseData.availableTime.endTime ||'' }]
                     };
                     setFormData(mappedData);
 
@@ -128,8 +131,28 @@ export const AuthProvider = ({ children }) => {
         }
     }, [id]);
 
+
+    const [doctors, setDoctors] = useState([]);
+
+    const getDoctorData = async () => {
+        try {
+            const response = await fetch("http://localhost:6500/api/admin/getDoctor", {
+                method: "GET",
+            });
+            const responseData = await response.json();
+            setDoctors(responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getDoctorData();
+    }, []);
+
+
     return (
-        <Authcontext.Provider value={{ storeTokenInLS, logoutUser, isLoggedIn, token, adminAuthentication, userId, id ,formData , setFormData}} >
+        <Authcontext.Provider value={{ storeTokenInLS, logoutUser, isLoggedIn, token, adminAuthentication, userId, id ,formData , setFormData,doctors,setDoctors}} >
             {children}
         </Authcontext.Provider>
     )

@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Doctorprofile.css"
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { useAuth } from '../../../Store/auth';
 const Doctorprofile = () => {
     const { id } = useParams();
 
-    
+
 
     const [doctor, setDoctor] = useState([]);
 
@@ -48,7 +48,7 @@ const Doctorprofile = () => {
     }, [id]);
     return (
         <>
-            <section class="section profile doctor-profile"  data-aos="zoom-in">
+            <section class="section profile doctor-profile" data-aos="zoom-in">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
@@ -83,9 +83,9 @@ const Doctorprofile = () => {
                                             <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
                                         </li>
 
-                                        <li class="nav-item">
+                                        {/* <li class="nav-item">
                                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rating">Ratings</button>
-                                        </li>
+                                        </li> */}
 
                                         <li class="nav-item">
                                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#appointment">Appointment</button>
@@ -150,11 +150,19 @@ const Doctorprofile = () => {
                                                 <div class="col-lg-9 col-md-8">{doctor.hospitalAffiliaion}</div>
                                                 {/* <div class="col-lg-9 col-md-8">Iris Hospital, Anand</div> */}
                                             </div>
+
+                                            <h5 className="card-title">Available Time</h5>
+                                            <div className="row">
+                                                {doctor.availableTime && doctor.availableTime.map((timeSlot, index) => (
+                                                    <div key={index} className="col-md-3">
+                                                        <p>{timeSlot.startTime} - {timeSlot.endTime}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
 
-                                        <div class="tab-pane fade profile-edit pt-3" id="rating">
+                                        {/* <div class="tab-pane fade profile-edit pt-3" id="rating">
 
-                                            {/* <!-- Profile Edit Form --> */}
                                             <form>
                                                 <div class="row mb-3">
                                                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
@@ -172,9 +180,8 @@ const Doctorprofile = () => {
                                                     <button type="submit" class="btn btn-primary">Save Changes</button>
                                                 </div>
                                             </form>
-                                            {/* <!-- End Profile Edit Form --> */}
 
-                                        </div>
+                                        </div> */}
 
                                         <div class="tab-pane fade pt-3" id="appointment">
 
@@ -230,18 +237,29 @@ const Doctorprofile = () => {
                                                         <label for="inputCity5" class="form-label">Date</label>
                                                         <input type="date" class="form-control" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    {/* <div class="col-md-4">
                                                         <label for="inputCity5" class="form-label">Time</label>
                                                         <select class="form-select" aria-label="Default select example">
                                                             <option value="1">10.30 AM - 11.00 AM</option>
                                                             <option value="2">11.00 AM - 11.30 AM</option>
                                                             <option value="3">05.00 PM - 5.30 PM</option>
                                                         </select>
+                                                    </div> */}
+                                                    <div className="col-md-4">
+                                                        <label htmlFor="inputCity5" className="form-label">Time</label>
+                                                        <select className="form-select" aria-label="Default select example">
+                                                            {doctor.availableTime && doctor.availableTime.map((timeSlot, index) => (
+                                                                <option key={index} value={index}>
+                                                                    {timeSlot.startTime} - {timeSlot.endTime}
+                                                                </option>
+                                                            ))}
+                                                        </select>
                                                     </div>
+
                                                     <div class="col-md-12">
                                                         <label for="inputPassword" class="col-sm-2 col-md-6 col-form-label">Message for Appointment</label>
                                                         <div class="col-sm-10 col-md-12">
-                                                            <textarea class="form-control" style={{"height": "100px"}}></textarea>
+                                                            <textarea class="form-control" style={{ "height": "100px" }}></textarea>
                                                         </div>
                                                     </div>
 

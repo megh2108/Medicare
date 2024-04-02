@@ -2,24 +2,30 @@ import React, { useState, useEffect } from 'react';
 import './Doctor_Page.css';
 import { NavLink } from 'react-router-dom';
 
+import { useAuth } from '../../../Store/auth';
+
+
 const Doctor_Page = () => {
-    const [doctors, setDoctors] = useState([]);
 
-    const getDoctorData = async () => {
-        try {
-            const response = await fetch("http://localhost:6500/api/admin/getDoctor", {
-                method: "GET",
-            });
-            const responseData = await response.json();
-            setDoctors(responseData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    const { doctors, setDoctors } = useAuth();
 
-    useEffect(() => {
-        getDoctorData();
-    }, []);
+    // const [doctors, setDoctors] = useState([]);
+
+    // const getDoctorData = async () => {
+    //     try {
+    //         const response = await fetch("http://localhost:6500/api/admin/getDoctor", {
+    //             method: "GET",
+    //         });
+    //         const responseData = await response.json();
+    //         setDoctors(responseData);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     getDoctorData();
+    // }, []);
 
     return (
         <>

@@ -11,8 +11,29 @@ const Yourprofile = () => {
     // const { id } = useParams();
 
     const { id, formData, setFormData } = useAuth();
- 
 
+
+    // Update available time slots
+    const handleTimeChange = (index, key, value) => {
+        const updatedTimeSlots = [...formData.availableTime];
+        updatedTimeSlots[index][key] = value;
+        setFormData({ ...formData, availableTime: updatedTimeSlots });
+    };
+
+    // Add new time slot
+    const addTimeSlot = () => {
+        setFormData({
+            ...formData,
+            availableTime: [...formData.availableTime, { startTime: '', endTime: '' }]
+        });
+    };
+
+    // Remove time slot
+    const removeTimeSlot = (index) => {
+        const updatedTimeSlots = [...formData.availableTime];
+        updatedTimeSlots.splice(index, 1);
+        setFormData({ ...formData, availableTime: updatedTimeSlots });
+    };
 
     //for updating post rouitng
     const updateProfile = async (e) => {
@@ -179,6 +200,25 @@ const Yourprofile = () => {
                                                         <input type="text" class="form-control" id="hospitalAffiliaion" name="hospitalAffiliaion" value={formData.hospitalAffiliaion} onChange={(e) => setFormData({ ...formData, hospitalAffiliaion: e.target.value })} />
                                                     </div>
                                                 </div>
+
+                                                <h5 className="card-title">Available Time</h5>
+                                                {formData.availableTime.map((timeSlot, index) => (
+                                                    <div key={index} className="row mb-3">
+                                                        <label className="col-md-4 col-lg-3 col-form-label">Time Slot {index + 1}</label>
+                                                        <div className="col-md-4 col-lg-3">
+                                                            <input type="time" className="form-control" value={timeSlot.startTime} onChange={(e) => handleTimeChange(index, 'startTime', e.target.value)} />
+                                                        </div>
+                                                        <div className="col-md-4 col-lg-3">
+                                                            <input type="time" className="form-control" value={timeSlot.endTime} onChange={(e) => handleTimeChange(index, 'endTime', e.target.value)} />
+                                                        </div>
+                                                        <div className="col-md-2 col-lg-3">
+                                                            <button type="button" className="btn btn-danger btn-sm m-1" onClick={() => removeTimeSlot(index)}>Remove</button>
+                                                            <button type="button" className="btn btn-primary btn-sm m-1" onClick={addTimeSlot}>Add Time Slot</button>
+                                                            {/* <button type="button" className="btn btn-primary mt-3" onClick={addTimeSlot}>Add Time Slot</button> */}
+
+                                                        </div>
+                                                    </div>
+                                                ))}
 
                                                 <div className="text-center">
                                                     <button type="button" class="btn btn-primary mt-3" onClick={updateProfile}>Update Profile</button>

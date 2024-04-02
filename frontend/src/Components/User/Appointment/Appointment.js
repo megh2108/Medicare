@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import './Appointment.css'
 import { useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../../../Store/auth';
 
 const Appointment = () => {
   const navigate = useNavigate();
+  const { doctors, setDoctors } = useAuth();
 
   return (
     <>
@@ -13,7 +15,6 @@ const Appointment = () => {
 
           <div className="section-title">
             <h2>Appointment</h2>
-            {/* <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> */}
           </div>
 
           <div class="card">
@@ -83,6 +84,8 @@ const Appointment = () => {
                     <option value="3">Dr. Nilay Shah</option>
                   </select>
                 </div>
+              
+
                 <div class="col-md-3">
                   <label for="inputCity5" class="form-label">Time</label>
                   <select class="form-select" aria-label="Default select example">
@@ -90,7 +93,8 @@ const Appointment = () => {
                     <option value="2">11.00 AM - 11.30 AM</option>
                     <option value="3">05.00 PM - 5.30 PM</option>
                   </select>
-                </div> 
+                </div>
+               
                 <div class="col-md-12">
                   <label for="inputPassword" class="col-sm-2 col-md-6 col-form-label">Message for Appointment</label>
                   <div class="col-sm-10 col-md-12">
