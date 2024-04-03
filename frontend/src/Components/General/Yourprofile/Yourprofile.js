@@ -12,6 +12,20 @@ const Yourprofile = () => {
 
     const { id, formData, setFormData } = useAuth();
 
+    //image start
+
+    const [profileImage, setProfileImage] = useState(null);
+
+    const handleImageChange = (e) => {
+        setProfileImage(e.target.files[0]);
+        setFormData({ ...formData, imageUrl: URL.createObjectURL(e.target.files[0]) });
+    };
+
+    const removeProfileImage = () => {
+        setProfileImage(null);
+        setFormData({ ...formData, imageUrl: '' });
+    };
+    //image end
 
     // Update available time slots
     const handleTimeChange = (index, key, value) => {
@@ -75,16 +89,16 @@ const Yourprofile = () => {
         }
     };
 
-    const convertToBase64 = (e) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            setFormData({ ...formData, formData: reader.result });
-        };
-        reader.onerror = (error) => {
-            console.log("Error: ", error);
-        };
-        reader.readAsDataURL(e.target.files[0]);
-    };
+    // const convertToBase64 = (e) => {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //         setFormData({ ...formData, formData: reader.result });
+    //     };
+    //     reader.onerror = (error) => {
+    //         console.log("Error: ", error);
+    //     };
+    //     reader.readAsDataURL(e.target.files[0]);
+    // };
 
 
     return (
@@ -97,7 +111,8 @@ const Yourprofile = () => {
                             <div className="card">
                                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                                    <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
+                                    <img src={formData.imageUrl || 'assets/img/profile-img.jpg'} alt="Profile" className="rounded-circle" />
+                                    {/* <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" /> */}
                                     <h2>{formData.name}</h2>
                                     <h3>{formData.special}</h3>
                                     <div className="social-links mt-2">
@@ -132,11 +147,18 @@ const Yourprofile = () => {
                                                 <h5 class="card-title">Basic Details</h5>
                                                 <div class="row mb-3">
                                                     <label for="image" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    {/* <div class="col-md-8 col-lg-9">
                                                         <img src="assets/img/profile-img.jpg" alt="Profile" />
                                                         <div class="pt-2">
                                                             <a href="#" class="btn btn-primary btn-sm m-1" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                                                             <a href="#" class="btn btn-danger btn-sm m-1" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                                        </div>
+                                                    </div> */}
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <img src={formData.imageUrl || 'assets/img/profile-img.jpg'} alt="Profile" />
+                                                        <div className="pt-2">
+                                                            <input type="file" accept="image/*" onChange={handleImageChange} />
+                                                            <button className="btn btn-danger btn-sm m-1" onClick={removeProfileImage} title="Remove my profile image"><i className="bi bi-trash"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>

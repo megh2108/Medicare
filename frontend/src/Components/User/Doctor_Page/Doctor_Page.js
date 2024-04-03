@@ -44,7 +44,8 @@ const Doctor_Page = () => {
                                         <div className="card card-doctor">
                                             <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
                                                 {/* Assuming profile-img.jpg is located at public/assets/img */}
-                                                <img src="assets/img/profile-img.jpg"  alt="Profile" className="rounded-circle" />
+                                                <img src={doctor.imageUrl || 'assets/img/profile-img.jpg'}  alt="Profile" className="rounded-circle" />
+                                                {/* <img src="assets/img/profile-img.jpg"  alt="Profile" className="rounded-circle" /> */}
                                                 <h2>{doctor.name}</h2>
                                                 <h3>{doctor.special}</h3>
                                                 <div className="social-links mt-2">

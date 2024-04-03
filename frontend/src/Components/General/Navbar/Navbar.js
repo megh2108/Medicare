@@ -41,10 +41,10 @@ const scrollto = (hash) => {
 const Navbar = () => {
 
   //for checking import from contextAPI loggedin or nor and toogling navbar 
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn,formData } = useAuth();
+ 
   console.log("login or not ", isLoggedIn);
 
-  const { formData } = useAuth();
 
   useEffect(() => {
 
@@ -118,6 +118,7 @@ const Navbar = () => {
               <li><NavLink className="nav-link scrollto abc" to="/About">About</NavLink></li>
               <li><NavLink className="nav-link scrollto abc" to="/FAQ">FAQ's</NavLink></li>
               <li><NavLink className="nav-link scrollto abc" to="/Medicine">Medicine</NavLink></li>
+              <li><NavLink className="nav-link scrollto abc" to="/Doctor_Page">Doctors</NavLink></li>
               <li><NavLink className="nav-link scrollto abc" to="/Contact">Contact</NavLink></li>
 
 
@@ -129,7 +130,8 @@ const Navbar = () => {
                   <li className="nav-item dropdown pe-3">
 
                     <NavLink className="nav-link nav-profile d-flex align-items-center pe-0" to="#" data-bs-toggle="dropdown" >
-                      <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
+                      <img src={formData.imageUrl || 'assets/img/profile-img.jpg'} alt="Profile" className="rounded-circle" />
+                      {/* <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" /> */}
                       {/* <span className="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> */}
                     </NavLink>
 

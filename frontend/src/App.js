@@ -88,7 +88,8 @@ const App = () => {
       <Routes>
 
         {/* general route */}
-        <Route path="/Home" excact element={[<Home />, <Specialist />, <Doctor_Home />, <Faq />]} />
+        <Route path="/Home" excact element={[<Home />, <Specialist />,  <Faq />]} />
+        {/* <Route path="/Home" excact element={[<Home />, <Specialist />, <Doctor_Home />, <Faq />]} /> */}
         <Route path="/Contact" excact element={<Contact />} />
         <Route path="/About" excact element={<About />} />
         <Route path="/FAQ" excact element={<Faq />} />

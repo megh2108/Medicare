@@ -56,7 +56,8 @@ const Doctorprofile = () => {
                             <div className="card">
                                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                                    <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
+                                    <img src={doctor.imageUrl|| 'assets/img/profile-img.jpg'} alt="Profile" className="rounded-circle" />
+                                    {/* <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" /> */}
                                     <h2>{doctor.name}</h2>
                                     {/* <h2>Dr. Amit Patel</h2> */}
                                     <h3>{doctor.special}</h3>

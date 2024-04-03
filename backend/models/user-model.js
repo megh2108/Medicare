@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
     hospitalAffiliaion: {
         type: String,        
     },
-    image: {
+    imageUrl: {
         type: String, 
     },
     availableTime: [{ 
