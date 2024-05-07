@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./Doctorprofile.css"
+import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
@@ -9,12 +10,82 @@ import { useAuth } from '../../../Store/auth';
 
 
 const Doctorprofile = () => {
+    const navigate = useNavigate();
+
     const { id } = useParams();
-
-
 
     const [doctor, setDoctor] = useState([]);
 
+
+    const [formData, setFormData] = useState({
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        age: '',
+        email: '',
+        mobileNumber: '',
+        city: '',
+        gender: '',
+        date: '',
+        doctor: doctor._id,
+        time: { startTime: '', endTime: '' },
+        message: ''
+    });
+
+    console.log("Doctor:", doctor);
+    console.log("Doctorid:", doctor._id);
+    console.log("Form Data:", formData);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleTimeSelection = (event) => {
+        const selectedTime = event.target.value;
+        const timeSlot = doctor.availableTime.find(slot => slot._id === selectedTime); // Change availableTimeSlots to availableTime
+        console.log("Timeslott", timeSlot);
+
+        setFormData({
+            ...formData,
+            doctor: doctor._id,
+            time: timeSlot // Update the time in formData with the selected time slot
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:6500/api/auth/registerappointment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+            const responseData = await response.json();
+            if (response.status === 201) {
+                toast.success(responseData.message);
+                navigate("/Home");
+            }
+            else if (response.status === 401) {
+                toast.error("Login in your account.");
+                navigate("/Signup_Login");
+
+
+            } else if (response.status === 402) {
+                toast.error("Doctor is not available at the specified date and time");
+
+            } else {
+                toast.error("Failed to create appointment");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            toast.error("Failed to create appointment");
+        }
+    };
 
     //fetching particular doctor
     useEffect(() => {
@@ -56,7 +127,7 @@ const Doctorprofile = () => {
                             <div className="card">
                                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                                    <img src={doctor.imageUrl|| 'assets/img/profile-img.jpg'} alt="Profile" className="rounded-circle" />
+                                    <img src={doctor.imageUrl || 'assets/img/profile-img.jpg'} alt="Profile" className="rounded-circle" />
                                     {/* <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" /> */}
                                     <h2>{doctor.name}</h2>
                                     {/* <h2>Dr. Amit Patel</h2> */}
@@ -192,31 +263,37 @@ const Doctorprofile = () => {
 
                                                 {/* <!-- Multi Columns Form --> */}
                                                 <form class="row g-3 mt-3">
-                                                    <div class="col-md-5">
-                                                        <label for="inputName5" class="form-label">First Name</label>
-                                                        <input type="text" class="form-control" id="inputName5" />
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">First Name</label>
+                                                        <input type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} />
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <label for="inputName5" class="form-label">Last Name</label>
-                                                        <input type="text" class="form-control" id="inputName5" />
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Middle Name</label>
+                                                        <input type="text" className="form-control" name="middleName" value={formData.middleName} onChange={handleChange} />
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <label for="inputName5" class="form-label">Age</label>
-                                                        <input type="text" class="form-control" id="inputName5" />
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Last Name</label>
+                                                        <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} />
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <label for="inputEmail5" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="inputEmail5" />
+
+                                                    <div className="col-md-2">
+                                                        <label className="form-label">Age</label>
+                                                        <input type="text" className="form-control" name="age" value={formData.age} onChange={handleChange} />
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label for="inputMobile5" class="form-label">Mobile Number</label>
-                                                        <input type="text" class="form-control" id="inputMobile5" />
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Email</label>
+                                                        <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} />
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <label for="inputCity5" class="form-label">City</label>
-                                                        <input type="text" class="form-control" id="inputCity5" />
+                                                    <div className="col-md-3">
+                                                        <label className="form-label">Mobile Number</label>
+                                                        <input type="text" className="form-control" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div className="col-md-3">
+                                                        <label className="form-label">City</label>
+                                                        <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} />
+                                                    </div>
+
+                                                    {/* <div class="col-md-4">
                                                         <label for="inputCity5" class="form-label">Gender</label>
 
                                                         <div class="row">
@@ -237,41 +314,55 @@ const Doctorprofile = () => {
                                                     <div class="col-md-4">
                                                         <label for="inputCity5" class="form-label">Date</label>
                                                         <input type="date" class="form-control" />
-                                                    </div>
-                                                    {/* <div class="col-md-4">
-                                                        <label for="inputCity5" class="form-label">Time</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option value="1">10.30 AM - 11.00 AM</option>
-                                                            <option value="2">11.00 AM - 11.30 AM</option>
-                                                            <option value="3">05.00 PM - 5.30 PM</option>
-                                                        </select>
                                                     </div> */}
                                                     <div className="col-md-4">
+                                                        <label className="form-label">Gender</label>
+                                                        <select className="form-select" name="gender" value={formData.gender} onChange={handleChange}>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Date</label>
+                                                        <input type="date" className="form-control" name="date" value={formData.date} onChange={handleChange} />
+                                                    </div>
+
+                                                 
+                                                    {/* <div className="col-md-4">
                                                         <label htmlFor="inputCity5" className="form-label">Time</label>
-                                                        <select className="form-select" aria-label="Default select example">
-                                                            {doctor.availableTime && doctor.availableTime.map((timeSlot, index) => (
-                                                                <option key={index} value={index}>
-                                                                    {timeSlot.startTime} - {timeSlot.endTime}
+                                                        <select className="form-select" aria-label="Default select example" value={`${formData.time.startTime}-${formData.time.endTime}`} onChange={handleTimeSelection}>
+                                                            {doctor.availableTimeSlots.map((timeSlot, index) => (
+                                                                <option key={index} value={timeSlot._id}>
+                                                                    {`${timeSlot.startTime} - ${timeSlot.endTime}`}
                                                                 </option>
                                                             ))}
                                                         </select>
-                                                    </div>
-
-                                                    <div class="col-md-12">
-                                                        <label for="inputPassword" class="col-sm-2 col-md-6 col-form-label">Message for Appointment</label>
-                                                        <div class="col-sm-10 col-md-12">
-                                                            <textarea class="form-control" style={{ "height": "100px" }}></textarea>
-                                                        </div>
-                                                    </div>
-
-                                                    {/*                                                     
-                                                    <div class="col-md-2">
-                                                        <label for="inputZip" class="form-label">Zip</label>
-                                                        <input type="text" class="form-control" id="inputZip" />
                                                     </div> */}
 
-                                                    <div class="text-center ">
-                                                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                                                
+                                                    {doctor && doctor.availableTime && (
+
+                                                        <div className="col-md-4">
+                                                            <label htmlFor="inputCity5" className="form-label">Time</label>
+                                                            <select className="form-select" aria-label="Default select example" value={`${formData.time.startTime}-${formData.time.endTime}`} onChange={handleTimeSelection}>
+                                                                <option value="">Select Time</option>
+                                                                {doctor.availableTime.map((timeSlot, index) => (
+                                                                    <option key={index} value={timeSlot._id}>
+                                                                        {`${timeSlot.startTime} - ${timeSlot.endTime}`}
+                                                                    </option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+                                                    )}
+                                                    <div className="col-md-12">
+                                                        <label className="col-sm-2 col-md-6 col-form-label">Message for Appointment</label>
+                                                        <div className="col-sm-10 col-md-12">
+                                                            <textarea className="form-control" style={{ "height": "100px" }} name="message" value={formData.message} onChange={handleChange}></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <button type="button" className="btn btn-primary mt-4" onClick={handleSubmit}>Submit</button>
                                                     </div>
                                                 </form>
                                                 {/* <!-- End Multi Columns Form --> */}

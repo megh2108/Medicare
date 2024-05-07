@@ -43,8 +43,8 @@ const appointmentSchema = new mongoose.Schema({
         required: true
     },
     time: {
-        type: String,
-        required: true
+        startTime: { type: String },
+        endTime: { type: String }
     },
     message: {
         type: String

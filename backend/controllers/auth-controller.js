@@ -1,6 +1,7 @@
 const User = require("../models/user-model");
 const Medicine = require("../models/medicine-model");
 const Conatct = require("../models/contact-model");
+const Appointment = require("../models/appointment");
 
 const home = (req, res) => {
 
@@ -18,24 +19,24 @@ const register = async (req, res) => {
     try {
 
         const { name, email, phone, password, cpassword, type, licenceno, special, secretkey } = req.body;
-        
+
         const userExist = await User.findOne({ email });
-        
+
         if (userExist) {
             return res.status(400).json({ msg: "email already exists" });
         }
-        
+
         else if (password !== cpassword) {
             // return res.status(422).json({ error: "Passwords do not match." });
             return res.status(400).json({ error: "Passwords do not match." });
         }
-        
-        
+
+
         if (type === 'admin' && secretkey !== 'admin') {
             return res.status(400).json({ error: "Invalid secret key for admin registration" });
             // return res.status(403).json({ error: "Invalid secret key for admin registration" });
         }
-        
+
         const userCreated = await User.create({
             name, email, phone, password, cpassword, type, licenceno, special, secretkey
         });
@@ -59,7 +60,7 @@ const login = async (req, res) => {
     try {
         const { emails, passwords } = req.body;
 
-        const userExist = await User.findOne({ email : emails});
+        const userExist = await User.findOne({ email: emails });
 
         if (!userExist) {
             return res.status(400).json({ message: "Invalid credentials" });
@@ -112,7 +113,7 @@ const contact = async (req, res) => {
         }
 
         // res.status(201).json({ message: "User registered successfully" });
-        res.status(201).json({ msg: "Message Submit Successfull"});
+        res.status(201).json({ msg: "Message Submit Successfull" });
 
 
     } catch (error) {
@@ -123,22 +124,81 @@ const contact = async (req, res) => {
 };
 
 
-const adminauth = async (req,res) => {
+const adminauth = async (req, res) => {
     try {
         const userData = req.user;
         console.log(userData);
 
-        if(userData.type === 'admin'){
+        if (userData.type === 'admin') {
 
             return res.status(200).json({ message: `Welcome Admin : ${userData.name} ` });
-        }else{
+        } else {
             return res.status(400).json({ message: "You are not Authorized for this page." });
         }
-      } catch (error) {
+    } catch (error) {
         console.log(` error from user route ${error}`);
-      }
+    }
+};
+
+
+const appointment = async (req, res) => {
+    try {
+        // Extract appointment details from request body
+        const {
+            firstName,
+            middleName,
+            lastName,
+            age,
+            email,
+            mobileNumber,
+            city,
+            gender,
+            date,
+            doctor,
+            time,
+            message
+        } = req.body;
+
+        // Check if the doctor exists
+        const doctorExist = await User.findById(doctor);
+        if (!doctorExist) {
+            return res.status(400).json({ error: "Doctor not found" });
+        }
+
+        // Check doctor's availability for the specified date and time
+        const existingAppointment = await Appointment.findOne({ doctor, date, 'time.startTime': time.startTime, 'time.endTime': time.endTime });
+        if (existingAppointment) {
+            return res.status(402).json({ error: "Doctor is not available at the specified date and time" });
+        }
+
+        // Create the appointment
+        const appointment = await Appointment.create({
+            firstName,
+            middleName,
+            lastName,
+            age,
+            email,
+            mobileNumber,
+            city,
+            gender,
+            date,
+            doctor,
+            time,
+            message
+        });
+
+     
+
+        // Return success response
+        res.status(201).json({ message: "Appointment created successfully", appointment });
+
+    } catch (error) {
+        console.error("Error creating appointment:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 };
 
 
 
-module.exports = { home, register, login, contact, adminauth };
+
+module.exports = { home, register, login, contact, adminauth, appointment };
