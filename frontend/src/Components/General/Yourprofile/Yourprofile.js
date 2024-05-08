@@ -11,7 +11,7 @@ const Yourprofile = () => {
     // const { id } = useParams();
 
     const { id, formData, setFormData } = useAuth();
-
+console.log(id);
     //image start
 
     const [profileImage, setProfileImage] = useState(null);

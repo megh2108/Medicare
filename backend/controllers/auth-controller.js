@@ -266,6 +266,7 @@ const appointment = async (req, res) => {
 const changepassword = async (req, res) => {
     try {
         const { id, oldPassword, newPassword, reenterNewPassword } = req.body;
+        console.log("bodyr",req.body)
 
         const userExist = await User.findById(id);
 

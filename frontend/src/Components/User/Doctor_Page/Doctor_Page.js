@@ -11,21 +11,21 @@ const Doctor_Page = () => {
 
     // const [doctors, setDoctors] = useState([]);
 
-    // const getDoctorData = async () => {
-    //     try {
-    //         const response = await fetch("http://localhost:6500/api/admin/getDoctor", {
-    //             method: "GET",
-    //         });
-    //         const responseData = await response.json();
-    //         setDoctors(responseData);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    const getDoctorData = async () => {
+        try {
+            const response = await fetch("http://localhost:6500/api/admin/getDoctor", {
+                method: "GET",
+            });
+            const responseData = await response.json();
+            setDoctors(responseData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    // useEffect(() => {
-    //     getDoctorData();
-    // }, []);
+    useEffect(() => {
+        getDoctorData();
+    }, []);
 
     return (
         <>

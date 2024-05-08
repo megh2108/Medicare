@@ -41,8 +41,8 @@ const scrollto = (hash) => {
 const Navbar = () => {
 
   //for checking import from contextAPI loggedin or nor and toogling navbar 
-  const { isLoggedIn,formData } = useAuth();
- 
+  const { isLoggedIn, formData } = useAuth();
+
   console.log("login or not ", isLoggedIn);
 
 
@@ -122,7 +122,7 @@ const Navbar = () => {
               <li><NavLink className="nav-link scrollto abc" to="/Contact">Contact</NavLink></li>
 
 
-              {/* {isLoggedIn ? ( */}
+              {isLoggedIn ? (
 
                 <>
                   {/* <li><NavLink className="nav-link scrollto abc" to="/Yourprofile">Your Profile</NavLink></li> */}
@@ -179,10 +179,10 @@ const Navbar = () => {
                   </li>
 
                 </>
-              {/* ) : ( */}
+              ) : (
                 <li><NavLink className="nav-link scrollto abc" to="/Signup_Login">Signup/Login</NavLink></li>
-              {/* )} */}
-             
+              )}
+
               <li><NavLink className="getstarted scrollto" to="/Appointment">Book Appointment</NavLink></li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>

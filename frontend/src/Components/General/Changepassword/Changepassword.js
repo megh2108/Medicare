@@ -11,6 +11,7 @@ const Changepassword = () => {
     // const navigate = useNavigate();
     // const {storeTokenInLS} = useAuth();
     const { id } = useAuth();
+    console.log(id);
 
 
 
@@ -18,14 +19,14 @@ const Changepassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [reenterNewPassword, setReenterNewPassword] = useState('');
 
+    const requestBody = {
+        id, oldPassword, newPassword, reenterNewPassword
+    };
+
+    console.log(requestBody);
+
     const Change = async (e) => {
         e.preventDefault();
-
-        const requestBody = {
-            id, oldPassword, newPassword, reenterNewPassword
-        };
-
-        console.log(requestBody);
         try {
             const response = await fetch("http://localhost:6500/api/auth/changepassword", {
                 method: "POST",

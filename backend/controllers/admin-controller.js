@@ -1,5 +1,6 @@
 const User = require("../models/user-model");
 const Medicine = require("../models/medicine-model");
+const Appointment = require("../models/appointment");
 
 const nodemailer = require('nodemailer');
 
@@ -257,6 +258,7 @@ const getAllAppointments = async (req, res) => {
     try {
 
         const appointments = await Appointment.find({});
+        
         // console.log(users);
 
         if (!appointments || appointments.length === 0) {
