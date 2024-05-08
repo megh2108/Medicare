@@ -3,6 +3,19 @@ const Medicine = require("../models/medicine-model");
 const Conatct = require("../models/contact-model");
 const Appointment = require("../models/appointment");
 
+const nodemailer = require('nodemailer');
+
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'meghshah0410@gmail.com',
+        pass: 'dlqt mqqp oobu cxok',
+    },
+});
+
 const home = (req, res) => {
 
     try {
@@ -165,6 +178,8 @@ const appointment = async (req, res) => {
             return res.status(400).json({ error: "Doctor not found" });
         }
 
+        
+
         // Check doctor's availability for the specified date and time
         const existingAppointment = await Appointment.findOne({ doctor, date, 'time.startTime': time.startTime, 'time.endTime': time.endTime });
         if (existingAppointment) {
@@ -186,8 +201,57 @@ const appointment = async (req, res) => {
             time,
             message
         });
+        
+        htmlSendToDoctor = `<h2>HealthEase Platform</h2><br> 
+        <h3>Hello ${doctorExist.name}</h3>
+        <h3>${firstName} is successfully book appointment with you at ${time.startTime} to ${time.endTime}.</h3> 
+        <h3>Please treat patient nicely.</h3> <br>
+        <h4>Thanks & Regards</h4> 
+        <h4>HealthEase</h4> 
+        `;
 
+        
+        htmlSendToPatient = `<h2>HealthEase Platform</h2><br> 
+        <h3>Hello ${firstName}</h3>
+        <h3>You successfully book appointment with ${doctorExist.name} at ${time.startTime} to ${time.endTime}.</h3> 
+        <h3>Take treatment form doctor and enjoy.</h3> <br>
+        <h4>Thanks & Regards</h4> 
+        <h4>HealthEase</h4> 
+        `;
 
+        const mailOptionsToDoctor = {
+            from: 'meghshah0410@gmail.com',
+            to: doctorExist.email,
+            subject: 'Acknowledgement of Appointment',
+            html: htmlSendToDoctor,
+        };
+
+        const mailOptionsToPateint = {
+            from: 'meghshah0410@gmail.com',
+            to: email,
+            subject: 'Acknowledgement of Appointment',
+            html: htmlSendToPatient,
+        };
+
+        transporter.sendMail(mailOptionsToDoctor, (error, info) => {
+            if (error) {
+                console.error('Error sending email to doctor:', error);
+                return res.status(400).json({ msg: "mail sent error to doctor." });
+            } else {
+                console.log('Email sent to doctor:', info.response);
+            }
+            console.log("mail transfer to doctor");
+        });
+
+        transporter.sendMail(mailOptionsToPateint, (error, info) => {
+            if (error) {
+                console.error('Error sending email: to patient', error);
+                return res.status(400).json({ msg: "mail sent error to patient." });
+            } else {
+                console.log('Email sent: to patient', info.response);
+            }
+            console.log("mail transfer to patient");
+        });
 
         // Return success response
         res.status(201).json({ message: "Appointment created successfully", appointment });
