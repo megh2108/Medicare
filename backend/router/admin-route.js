@@ -16,6 +16,8 @@ router.route('/getDoctor').get(adminControllers.getDoctor);
 router.route('/getOneUser/:id').get(adminControllers.getOneUser);
 router.route('/updateUser/:id').put(adminControllers.updateUser);
 router.route('/appointmentDetails').get(authMiddleware,adminControllers.getAllAppointments);
+router.route('/getFutureAppointmentsForOneUser/:id').get(adminControllers.getFutureAppointmentsForOneUser);
+
 
 
 module.exports = router

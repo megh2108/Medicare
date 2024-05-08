@@ -158,6 +158,7 @@ const appointment = async (req, res) => {
     try {
         // Extract appointment details from request body
         const {
+            user,
             firstName,
             middleName,
             lastName,
@@ -188,6 +189,7 @@ const appointment = async (req, res) => {
 
         // Create the appointment
         const appointment = await Appointment.create({
+            user,
             firstName,
             middleName,
             lastName,

@@ -69,8 +69,10 @@ export const AuthProvider = ({ children }) => {
 
     }
     const [formData, setFormData] = useState({
+        id: '',
         name: '',
         email: '',
+        type:'',
         phone: '',
         about: '',
         licenceno: '',
@@ -87,7 +89,7 @@ export const AuthProvider = ({ children }) => {
 
     //fetching particular user
     useEffect(() => {
-        const fetchUserById = async () => {
+        const fetchUserById = async (id) => {
             try {
                 const response = await fetch(`http://localhost:6500/api/admin/getOneUser/${id}`, {
                     method: "GET",
@@ -101,8 +103,10 @@ export const AuthProvider = ({ children }) => {
                 else if (response.status === 200) {
 
                     const mappedData = {
+                        id: responseData._id || '',
                         name: responseData.name || '',
                         email: responseData.email || '',
+                        type: responseData.type || '',
                         phone: responseData.phone || '',
                         about: responseData.about || '',
                         licenceno: responseData.licenceno || '',
@@ -126,7 +130,7 @@ export const AuthProvider = ({ children }) => {
         };
 
         if (id) {
-            fetchUserById();
+            fetchUserById(id);
 
         }
     }, [id]);

@@ -6,12 +6,13 @@ import { useAuth } from '../../../Store/auth';
 
 const Appointment = () => {
     const navigate = useNavigate();
-    const { doctors } = useAuth();
-
+    const { doctors, id } = useAuth();
+    console.log("appointment id", id);
     const [selectedDoctor, setSelectedDoctor] = useState('');
     const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 
     const [formData, setFormData] = useState({
+        user: id,
         firstName: '',
         middleName: '',
         lastName: '',
@@ -59,16 +60,16 @@ const Appointment = () => {
     const handleDoctorSelection = (event) => {
         const selectedDoctorId = event.target.value;
         setSelectedDoctor(selectedDoctorId);
-        
+
         const doctor = doctors.find((doc) => doc._id === selectedDoctorId);
-    
+
         // Update formData with selected doctor
         setFormData({
             ...formData,
             doctor: selectedDoctorId,
             time: { startTime: '', endTime: '' } // Reset time in formData when doctor changes
         });
-    
+
         // Update available time slots
         if (doctor) {
             setAvailableTimeSlots(doctor.availableTime);
@@ -193,7 +194,7 @@ const Appointment = () => {
                                     </select>
                                 </div>
 
-                           
+
                                 <div className="col-md-3">
                                     <label htmlFor="inputCity5" className="form-label">Time</label>
                                     <select className="form-select" aria-label="Default select example" value={formData.time} onChange={handleTimeSelection}>

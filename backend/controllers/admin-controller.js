@@ -273,4 +273,27 @@ const getAllAppointments = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser, getAllAppointments };
+
+
+const getFutureAppointmentsForOneUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        console.log(id);
+        const futureAppointments = await Appointment.find({
+            date: { $gte: new Date() }, // Get appointments with dates greater than or equal to today
+            user: id // Get appointments for the authenticated user
+        }).populate('doctor', 'name'); // Populate doctor details
+
+        if (!futureAppointments || futureAppointments.length === 0) {
+            return res.status(404).json({ message: "No appointment Found" });
+
+        }
+
+        return res.status(200).json(futureAppointments);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser, getAllAppointments ,getFutureAppointmentsForOneUser};

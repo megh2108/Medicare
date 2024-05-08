@@ -44,7 +44,7 @@ const Navbar = () => {
   const { isLoggedIn, formData } = useAuth();
 
   console.log("login or not ", isLoggedIn);
-
+// console.log(id);
 
   useEffect(() => {
 
@@ -151,6 +151,13 @@ const Navbar = () => {
                           <span>My Profile</span>
                         </NavLink>
                       </li>
+                      {/* <hr className="dropdown-divider" />
+
+                      <li>
+                        <NavLink className="dropdown-item nav-link scrollto abc" to="/Yourappointment">
+                          <span>Yourappointment</span>
+                        </NavLink>
+                      </li> */}
                       <li>
                         <hr className="dropdown-divider" />
                       </li>

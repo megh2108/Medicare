@@ -11,7 +11,14 @@ const Yourprofile = () => {
     // const { id } = useParams();
 
     const { id, formData, setFormData } = useAuth();
-console.log(id);
+    console.log(id);
+    console.log("formdata", formData);
+    console.log(formData.id);
+
+
+    const isPatient = formData.type === 'patient';
+    // const isAdmin = formData.type === 'admin';
+
     //image start
 
     const [profileImage, setProfileImage] = useState(null);
@@ -183,64 +190,73 @@ console.log(id);
                                                     </div>
                                                 </div>
 
-                                                <div class="row mb-3">
-                                                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <textarea class="form-control" id="about" style={{ "height": "100px" }} name="about" value={formData.about} onChange={(e) => setFormData({ ...formData, about: e.target.value })} />
-                                                    </div>
-                                                </div>
-
-
-                                                <h5 class="card-title">Professional  Details</h5>
-                                                <div class="row mb-3">
-                                                    <label for="licenceno" class="col-md-4 col-lg-3 col-form-label">Medical License No</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="text" class="form-control" id="licenceno" name="licenceno" value={formData.licenceno} onChange={(e) => setFormData({ ...formData, licenceno: e.target.value })} />
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="special" class="col-md-4 col-lg-3 col-form-label">Specialization</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="text" class="form-control" id="special" name="special" value={formData.special} onChange={(e) => setFormData({ ...formData, special: e.target.value })} />
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="qualification" class="col-md-4 col-lg-3 col-form-label">Qualifications</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="text" class="form-control" id="qualification" name="qualification" value={formData.qualification} onChange={(e) => setFormData({ ...formData, qualification: e.target.value })} />
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="experience" class="col-md-4 col-lg-3 col-form-label">Years of Experience</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="text" class="form-control" id="experience" name="experience" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} />
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="hospitalAffiliaion" class="col-md-4 col-lg-3 col-form-label">Hospital Affiliation</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="text" class="form-control" id="hospitalAffiliaion" name="hospitalAffiliaion" value={formData.hospitalAffiliaion} onChange={(e) => setFormData({ ...formData, hospitalAffiliaion: e.target.value })} />
-                                                    </div>
-                                                </div>
-
-                                                <h5 className="card-title">Available Time</h5>
-                                                {formData.availableTime.map((timeSlot, index) => (
-                                                    <div key={index} className="row mb-3">
-                                                        <label className="col-md-4 col-lg-3 col-form-label">Time Slot {index + 1}</label>
-                                                        <div className="col-md-4 col-lg-3">
-                                                            <input type="time" className="form-control" value={timeSlot.startTime} onChange={(e) => handleTimeChange(index, 'startTime', e.target.value)} />
+                                                {/* {(!isPatient && !isAdmin) ? ( */}
+                                                {!isPatient ? (
+                                                    <>
+                                                        <div class="row mb-3">
+                                                            <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                                            <div class="col-md-8 col-lg-9">
+                                                                <textarea class="form-control" id="about" style={{ "height": "100px" }} name="about" value={formData.about} onChange={(e) => setFormData({ ...formData, about: e.target.value })} />
+                                                            </div>
                                                         </div>
-                                                        <div className="col-md-4 col-lg-3">
-                                                            <input type="time" className="form-control" value={timeSlot.endTime} onChange={(e) => handleTimeChange(index, 'endTime', e.target.value)} />
-                                                        </div>
-                                                        <div className="col-md-2 col-lg-3">
-                                                            <button type="button" className="btn btn-danger btn-sm m-1" onClick={() => removeTimeSlot(index)}>Remove</button>
-                                                            <button type="button" className="btn btn-primary btn-sm m-1" onClick={addTimeSlot}>Add Time Slot</button>
-                                                            {/* <button type="button" className="btn btn-primary mt-3" onClick={addTimeSlot}>Add Time Slot</button> */}
 
+
+                                                        <h5 class="card-title">Professional  Details</h5>
+                                                        <div class="row mb-3">
+                                                            <label for="licenceno" class="col-md-4 col-lg-3 col-form-label">Medical License No</label>
+                                                            <div class="col-md-8 col-lg-9">
+                                                                <input type="text" class="form-control" id="licenceno" name="licenceno" value={formData.licenceno} onChange={(e) => setFormData({ ...formData, licenceno: e.target.value })} />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                        <div class="row mb-3">
+                                                            <label for="special" class="col-md-4 col-lg-3 col-form-label">Specialization</label>
+                                                            <div class="col-md-8 col-lg-9">
+                                                                <input type="text" class="form-control" id="special" name="special" value={formData.special} onChange={(e) => setFormData({ ...formData, special: e.target.value })} />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="qualification" class="col-md-4 col-lg-3 col-form-label">Qualifications</label>
+                                                            <div class="col-md-8 col-lg-9">
+                                                                <input type="text" class="form-control" id="qualification" name="qualification" value={formData.qualification} onChange={(e) => setFormData({ ...formData, qualification: e.target.value })} />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="experience" class="col-md-4 col-lg-3 col-form-label">Years of Experience</label>
+                                                            <div class="col-md-8 col-lg-9">
+                                                                <input type="text" class="form-control" id="experience" name="experience" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="hospitalAffiliaion" class="col-md-4 col-lg-3 col-form-label">Hospital Affiliation</label>
+                                                            <div class="col-md-8 col-lg-9">
+                                                                <input type="text" class="form-control" id="hospitalAffiliaion" name="hospitalAffiliaion" value={formData.hospitalAffiliaion} onChange={(e) => setFormData({ ...formData, hospitalAffiliaion: e.target.value })} />
+                                                            </div>
+                                                        </div>
+
+                                                        <h5 className="card-title">Available Time</h5>
+                                                        {formData.availableTime.map((timeSlot, index) => (
+                                                            <div key={index} className="row mb-3">
+                                                                <label className="col-md-4 col-lg-3 col-form-label">Time Slot {index + 1}</label>
+                                                                <div className="col-md-4 col-lg-3">
+                                                                    <input type="time" className="form-control" value={timeSlot.startTime} onChange={(e) => handleTimeChange(index, 'startTime', e.target.value)} />
+                                                                </div>
+                                                                <div className="col-md-4 col-lg-3">
+                                                                    <input type="time" className="form-control" value={timeSlot.endTime} onChange={(e) => handleTimeChange(index, 'endTime', e.target.value)} />
+                                                                </div>
+                                                                <div className="col-md-2 col-lg-3">
+                                                                    <button type="button" className="btn btn-danger btn-sm m-1" onClick={() => removeTimeSlot(index)}>Remove</button>
+                                                                    <button type="button" className="btn btn-primary btn-sm m-1" onClick={addTimeSlot}>Add Time Slot</button>
+                                                                    {/* <button type="button" className="btn btn-primary mt-3" onClick={addTimeSlot}>Add Time Slot</button> */}
+
+                                                                </div>
+                                                            </div>
+                                                        ))}
+
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                    </>
+                                                )}
 
                                                 <div className="text-center">
                                                     <button type="button" class="btn btn-primary mt-3" onClick={updateProfile}>Update Profile</button>
