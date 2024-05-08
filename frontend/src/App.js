@@ -35,6 +35,7 @@ import Medicinedetail from './Components/Admin/Medicinedetails/Medicinedetail';
 import Addmedicine from './Components/Admin/Addmedicine/Addmedicine';
 import Yourprofile from './Components/General/Yourprofile/Yourprofile';
 import Changepassword from './Components/General/Changepassword/Changepassword';
+import Appointmentdetails from './Components/Admin/Appointmentdetails/Appointmentdetails';
 
 const App = () => {
 
@@ -70,6 +71,8 @@ const App = () => {
         <Route path="/Doctor_Page" excact element={<Doctor_Page />} />
         <Route path="/Changepassword" excact element={<Changepassword />} />
         <Route path="/Yourprofile" excact element={<Yourprofile />} />
+        {/* <Route path="/Appointmentdetails" excact element={<Appointmentdetails />} /> */}
+
         {/* <Route path="/Dashboard" excact element={<Dashboard />} /> */}
 
 
@@ -80,6 +83,7 @@ const App = () => {
           <Route path="Addmedicine" excact element={<Addmedicine />} />
           <Route path="Addmedicine/:id" excact element={<Addmedicine />} />
           <Route path="Medicinedetails" excact element={<Medicinedetail />} />
+          <Route path="Appointmentdetails" excact element={<Appointmentdetails />} />
         </Route>
 
 

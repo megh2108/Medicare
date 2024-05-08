@@ -251,4 +251,24 @@ const updateUser = async (req, res) => {
     }
 }
 
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser };
+
+const getAllAppointments = async (req, res) => {
+
+    try {
+
+        const appointments = await Appointment.find({});
+        // console.log(users);
+
+        if (!appointments || appointments.length === 0) {
+            return res.status(404).json({ message: "No Appointment Found" });
+
+        }
+
+        return res.status(200).json(appointments);
+
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser, getAllAppointments };
