@@ -34,51 +34,11 @@ import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import Medicinedetail from './Components/Admin/Medicinedetails/Medicinedetail';
 import Addmedicine from './Components/Admin/Addmedicine/Addmedicine';
 import Yourprofile from './Components/General/Yourprofile/Yourprofile';
+import Changepassword from './Components/General/Changepassword/Changepassword';
 
 const App = () => {
 
-  // useEffect(() => {
-  //   const loadScript = () => {
-  //     const script = document.createElement("script");
-  //     script.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-  //     script.async = true;
-
-  //     script.onerror = () => {
-  //       console.error("Error loading Kommunicate script.");
-  //     };
-
-  //     document.body.appendChild(script);
-
-  //     return () => {
-  //       // Cleanup function to remove the script when component unmounts
-  //       document.body.removeChild(script);
-  //     };
-  //   };
-
-  //   loadScript();
-  // }, []);
-
-  // useEffect(() => {
-  //   const loadKommunicateScript = () => {
-  //     const kommunicateSettings = {
-  //       appId: "2f12877b0317a94aed3a1627ed99c2729",
-  //       popupWidget: true,
-  //       automaticChatOpenOnNavigation: true
-  //     };
-
-  //     const script = document.createElement("script");
-  //     script.type = "text/javascript";
-  //     script.async = true;
-  //     script.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-
-  //     document.head.appendChild(script);
-  //     window.kommunicate = window.kommunicate || {};
-  //     window.kommunicate._globals = kommunicateSettings;
-  //   };
-
-  //   loadKommunicateScript();
-  // }, []);
-
+ 
   return (
     <>
 
@@ -108,7 +68,9 @@ const App = () => {
         <Route path="/Doctorprofile/:id" excact element={<Doctorprofile />} />
         <Route path="/Appointment" excact element={<Appointment />} />
         <Route path="/Doctor_Page" excact element={<Doctor_Page />} />
+        <Route path="/Changepassword" excact element={<Changepassword />} />
         <Route path="/Yourprofile" excact element={<Yourprofile />} />
+        {/* <Route path="/Dashboard" excact element={<Dashboard />} /> */}
 
 
         <Route path="/Admin" excact element={<Sidebar /> } >

@@ -187,7 +187,7 @@ const appointment = async (req, res) => {
             message
         });
 
-     
+
 
         // Return success response
         res.status(201).json({ message: "Appointment created successfully", appointment });
@@ -199,6 +199,46 @@ const appointment = async (req, res) => {
 };
 
 
+const changepassword = async (req, res) => {
+    try {
+        const { id, oldPassword, newPassword, reenterNewPassword } = req.body;
+
+        const userExist = await User.findById(id);
+
+        if (!userExist) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        // const user = await bcrypt.compare(password, userExist.password);
+        const isOldPasswordValid = await userExist.comparePassword(oldPassword);
 
 
-module.exports = { home, register, login, contact, adminauth, appointment };
+        if (!isOldPasswordValid) {
+            return res.status(400).json({ message: "Password is not correct." });
+        }
+
+        // Check if newPassword matches reenterNewPassword
+        if (newPassword !== reenterNewPassword) {
+            return res.status(400).json({ message: "Password is not correct." });
+        }
+
+        // Hash the new password
+        // const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+        // const hashedReenterNewPassword = await bcrypt.hash(reenterNewPassword, 10);
+
+        // Update user's password in the database
+        userExist.password = newPassword;
+        userExist.cpassword = reenterNewPassword;
+        
+        await userExist.save();
+
+        // Return success message
+        return res.status(200).json({ message: "Password changed successfully" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
+module.exports = { home, register, login, contact, adminauth, appointment, changepassword };

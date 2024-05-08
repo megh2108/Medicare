@@ -67,7 +67,7 @@ const Yourprofile = () => {
             if (response.status === 404) {
                 toast.error(responseData.msg);
             } else if (response.status === 200) {
-                toast.success("Doctor updated successfully");
+                toast.success("Data updated successfully");
 
 
                 // setFormData({
