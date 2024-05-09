@@ -173,6 +173,8 @@ const appointment = async (req, res) => {
             message
         } = req.body;
 
+        console.log(req.body)
+
         // Check if the doctor exists
         const doctorExist = await User.findById(doctor);
         if (!doctorExist) {

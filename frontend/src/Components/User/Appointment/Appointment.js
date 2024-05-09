@@ -108,7 +108,7 @@ const Appointment = () => {
             const responseData = await response.json();
             if (response.status === 201) {
                 toast.success(responseData.message);
-                navigate("/Home");
+                
             }
             else if (response.status === 401) {
                 toast.error("Login in your account.");
@@ -168,6 +168,7 @@ const Appointment = () => {
                                 <div className="col-md-3">
                                     <label className="form-label">Gender</label>
                                     <select className="form-select" name="gender" value={formData.gender} onChange={handleChange}>
+                                        <option value="">Select Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="Other">Other</option>

@@ -318,6 +318,7 @@ const Doctorprofile = () => {
                                                     <div className="col-md-4">
                                                         <label className="form-label">Gender</label>
                                                         <select className="form-select" name="gender" value={formData.gender} onChange={handleChange}>
+                                                            <option value="">Select Gender</option>
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Other">Other</option>
@@ -328,7 +329,7 @@ const Doctorprofile = () => {
                                                         <input type="date" className="form-control" name="date" value={formData.date} onChange={handleChange} />
                                                     </div>
 
-                                                 
+
                                                     {/* <div className="col-md-4">
                                                         <label htmlFor="inputCity5" className="form-label">Time</label>
                                                         <select className="form-select" aria-label="Default select example" value={`${formData.time.startTime}-${formData.time.endTime}`} onChange={handleTimeSelection}>
@@ -340,7 +341,7 @@ const Doctorprofile = () => {
                                                         </select>
                                                     </div> */}
 
-                                                
+
                                                     {doctor && doctor.availableTime && (
 
                                                         <div className="col-md-4">
