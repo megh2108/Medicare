@@ -105,17 +105,17 @@ const changeUserStatus = async (req, res) => {
         );
 
         var html;
-        if (isValid == 'Active'){
-            
-         html = `<h2>HealthEase Platform</h2><br> 
+        if (isValid == 'Active') {
+
+            html = `<h2>HealthEase Platform</h2><br> 
                     <h3>Hello ${updatedUserStatus.name}</h3>
                     <h3>Admin accepted your request successfully.</h3> 
                     <h3>You are authorized for login.</h3> <br>
                     <h4>Thanks</h4> 
                     `;
         }
-        else{
-             html = `<h2>HealthEase Platform</h2><br> 
+        else {
+            html = `<h2>HealthEase Platform</h2><br> 
             <h3>Hello ${updatedUserStatus.name}</h3>
             <h3>Admin rejected your request.</h3> 
             <h3>You are not authorized for login.</h3> <br>
@@ -258,7 +258,7 @@ const getAllAppointments = async (req, res) => {
     try {
 
         const appointments = await Appointment.find({});
-        
+
         // console.log(users);
 
         if (!appointments || appointments.length === 0) {
@@ -296,4 +296,49 @@ const getFutureAppointmentsForOneUser = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
-module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser, getAllAppointments ,getFutureAppointmentsForOneUser};
+
+const totalCountPatients = async (req, res) => {
+
+    try {
+        // Count the users whose type is "patient"
+        const totalPatients = await User.countDocuments({ type: "patient" });
+        res.status(200).json({ totalPatients });
+    } catch (error) {
+        console.error("Error retrieving total patients:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+
+const totalCountDoctors = async (req, res) => {
+
+    try {
+        // Count the users whose type is "patient"
+        const totalDoctors = await User.countDocuments({ type: "doctor" });
+        res.status(200).json({ totalDoctors });
+    } catch (error) {
+        console.error("Error retrieving total patients:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+const totalCountAppointments = async (req, res) => {
+    try {
+        // Retrieve today's date
+        const today = new Date();
+
+        // Find future appointments (appointments with date greater than or equal to today)
+        const futureAppointments = await Appointment.countDocuments({ date: { $gte: today } });
+
+        // Find past appointments (appointments with date less than today)
+        const pastAppointments = await Appointment.countDocuments({ date: { $lt: today } });
+
+        res.status(200).json({ futureAppointments, pastAppointments });
+    } catch (error) {
+        console.error('Error retrieving appointments:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
+module.exports = { getAllUsers, changeUserStatus, insertMedicine, getMedicine, getDoctor, getAllMedicines, getOneMedicines, updateMedicines, getOneUser, updateUser, getAllAppointments, getFutureAppointmentsForOneUser, totalCountPatients, totalCountDoctors,totalCountAppointments };

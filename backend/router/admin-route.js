@@ -17,6 +17,10 @@ router.route('/getOneUser/:id').get(adminControllers.getOneUser);
 router.route('/updateUser/:id').put(adminControllers.updateUser);
 router.route('/appointmentDetails').get(authMiddleware,adminControllers.getAllAppointments);
 router.route('/getFutureAppointmentsForOneUser/:id').get(adminControllers.getFutureAppointmentsForOneUser);
+router.route('/totalCountPatients').get(adminControllers.totalCountPatients);
+router.route('/totalCountDoctors').get(adminControllers.totalCountDoctors);
+router.route('/totalCountAppointments').get(adminControllers.totalCountAppointments);
+
 
 
 

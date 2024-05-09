@@ -1,6 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 const Dashboard = () => {
+
+  const [totalPatients, setTotalPatients] = useState(0);
+  const [totalDoctors, setTotalDoctors] = useState(0);
+  const [totalPastAppointment, setTotalPastAppointment] = useState(0);
+  const [totalFutureAppointment, setTotalFutureAppointment] = useState(0);
+
+  const getPatientData = async () => {
+    try {
+      const response = await fetch("http://localhost:6500/api/admin/totalCountPatients", {
+        method: "GET",
+      });
+      const responseData = await response.json();
+      setTotalPatients(responseData.totalPatients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getDoctorData = async () => {
+    try {
+      const response = await fetch("http://localhost:6500/api/admin/totalCountDoctors", {
+        method: "GET",
+      });
+      const responseData = await response.json();
+      setTotalDoctors(responseData.totalDoctors);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAppointmentData = async () => {
+    try {
+      const response = await fetch("http://localhost:6500/api/admin/totalCountAppointments", {
+        method: "GET",
+      });
+      const responseData = await response.json();
+      setTotalPastAppointment(responseData.pastAppointments);
+      setTotalFutureAppointment(responseData.futureAppointments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getPatientData();
+    getDoctorData();
+    getAppointmentData();
+  }, []);
+
+
   return (
     <>
       <main id="main" class="main">
@@ -16,8 +66,8 @@ const Dashboard = () => {
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                          Total Student</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalStudents</div>
+                          Total Patients</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{totalPatients}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,9 +84,9 @@ const Dashboard = () => {
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                          Total Teacher
+                          Total Doctors
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalTeachers</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{totalDoctors}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -46,34 +96,6 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* <!-- Earnings (Monthly) Card Example --> */}
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                        </div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-info" role="progressbar"
-                                style={{ "width": "50%" }} aria-valuenow="50" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* <!-- Pending Requests Card Example --> */}
               <div class="col-xl-3 col-md-6 mb-4">
@@ -82,8 +104,25 @@ const Dashboard = () => {
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                          Pending Requests</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                          Total Past Appointments</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{totalPastAppointment}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                          Total Future Appointments</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{totalFutureAppointment}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>

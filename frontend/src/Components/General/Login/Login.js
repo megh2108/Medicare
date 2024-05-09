@@ -108,6 +108,12 @@ const Login = () => {
                 // toast.success("User Successfully Logged In");
                 window.alert("User Successfully Logged In");
                 navigate("/Home");
+            }else if (response.status === 202) {
+                // Successful login
+                // dispatch({ type: "USER", payload: true });
+                // toast.success("User Successfully Logged In");
+                window.alert("Admin Successfully Logged In");
+                navigate("/Admin/Dashboard");
             } else if (response.status === 400) {
                 // Invalid login credentials
                 // toast.error("Invalid Login");

@@ -200,7 +200,7 @@ const Register = () => {
                 setEmails("");
                 setPasswords("");
 
-                navigate("/Admin");
+                navigate("/Admin/Dashboard");
 
             }
             else {
